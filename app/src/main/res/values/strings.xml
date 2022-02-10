@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Real Estate Manager</string>
+
+    <!-- Drawer -->
+    <string name="menu_currency_converter">Currency converter</string>
+
+    <!-- Toolbar -->
+    <string name="toolbar_properties_list">Properties list</string>
+    <string name="toolbar_currency_converter">Currency converter</string>
 </resources>
