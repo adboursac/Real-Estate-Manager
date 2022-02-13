@@ -1,8 +1,16 @@
 package com.openclassrooms.realestatemanager.data.model;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Property {
 
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "property_id")
     private long id;
+
     private PropertyType type;
     private String district;
     private int price;
@@ -23,8 +31,7 @@ public class Property {
         Apartment, House, Penthouse, Loft, Mansion, Villa
     }
 
-    public Property(long id, PropertyType type, String district, int price, int surface, int numberOfRooms, int numberOfBathrooms, int numberOfBedrooms, String description, long mainPictureId, String address, boolean available, String listedDate, String soldDate, String realEstateAgent) {
-        this.id = id;
+    public Property(PropertyType type, String district, int price, int surface, int numberOfRooms, int numberOfBathrooms, int numberOfBedrooms, String description, long mainPictureId, String address, boolean available, String listedDate, String soldDate, String realEstateAgent) {
         this.type = type;
         this.district = district;
         this.price = price;
