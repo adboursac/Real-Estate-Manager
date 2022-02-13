@@ -7,4 +7,5 @@
     <!-- Toolbar -->
     <string name="toolbar_properties_list">Properties list</string>
     <string name="toolbar_currency_converter">Currency converter</string>
+
 </resources>

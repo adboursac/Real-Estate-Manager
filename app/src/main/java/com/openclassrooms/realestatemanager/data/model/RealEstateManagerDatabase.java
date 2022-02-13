@@ -9,9 +9,11 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.openclassrooms.realestatemanager.Utils;
 import com.openclassrooms.realestatemanager.data.model.dao.PropertyDao;
 import com.openclassrooms.realestatemanager.data.model.dao.PropertyPictureDao;
 
+import java.time.LocalDate;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -53,6 +55,20 @@ public abstract class RealEstateManagerDatabase extends RoomDatabase {
     private static void prepopulateDatabase() {
         PropertyDao dao = INSTANCE.propertyDao();
         dao.deleteAll();
-        //dao.insert();
+        dao.insert(new Property(
+                Property.PropertyType.Penthouse,
+                "Manhattan",
+                9000000,
+                280,
+                8,
+                2,
+                4,
+                "Beautiful penthouse",
+                0,
+                "4 Wall St New York, NY 10005",
+                true,
+                Utils.getTodayDate(),
+                "",
+                "Bill"));
     }
 }

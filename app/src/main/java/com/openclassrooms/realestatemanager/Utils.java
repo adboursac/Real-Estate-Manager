@@ -3,8 +3,10 @@ package com.openclassrooms.realestatemanager;
 import android.content.Context;
 import android.net.wifi.WifiManager;
 
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 /**
  * Created by Philippe on 21/02/2018.
@@ -62,4 +64,15 @@ public class Utils {
     public static DateTimeFormatter getDefaultTimeFormatter() {
         return DateTimeFormatter.ofPattern("dd/MM/yyyy");
     }
+
+    /**
+     * Generate a dollar price formatted string form given number
+     * @param number number to convert to price String
+     * @return example : 1000 integer value will return string $1'000
+     */
+    public static String dollarString(int number) {
+        String formattedNumber = NumberFormat.getNumberInstance(Locale.US).format(number);
+        return "$"+formattedNumber;
+    }
+
 }
