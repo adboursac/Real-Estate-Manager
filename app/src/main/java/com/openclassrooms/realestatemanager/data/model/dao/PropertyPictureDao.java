@@ -12,12 +12,15 @@ import java.util.List;
 @Dao
 public interface PropertyPictureDao {
 
-    @Query("SELECT * FROM PropertyPicture")
-    LiveData<List<PropertyPicture>> fetchAllPictures();
+    @Query("SELECT * FROM PropertyPicture WHERE property_id = :propertyId")
+    LiveData<List<PropertyPicture>> fetchPictures(long propertyId);
 
     @Insert
     long insert(PropertyPicture propertyPicture);
 
     @Query("DELETE FROM PropertyPicture WHERE property_picture_id = :propertyPictureId")
     int delete(long propertyPictureId);
+
+    @Query("DELETE FROM PropertyPicture")
+    void deleteAll();
 }

@@ -53,9 +53,12 @@ public abstract class RealEstateManagerDatabase extends RoomDatabase {
     };
 
     private static void prepopulateDatabase() {
-        PropertyDao dao = INSTANCE.propertyDao();
-        dao.deleteAll();
-        dao.insert(new Property(
+        PropertyDao propertyDao = INSTANCE.propertyDao();
+        PropertyPictureDao propertyPictureDao = INSTANCE.propertyPictureDao();
+        propertyDao.deleteAll();
+        propertyPictureDao.deleteAll();
+
+        Property property1 = new Property(
                 Property.PropertyType.Penthouse,
                 "Manhattan",
                 9000000,
@@ -69,6 +72,56 @@ public abstract class RealEstateManagerDatabase extends RoomDatabase {
                 true,
                 Utils.getTodayDate(),
                 "",
-                "Bill"));
+                "Bill");
+
+        Property property2 = new Property(
+                Property.PropertyType.Apartment,
+                "Brooklyn",
+                700000,
+                90,
+                4,
+                1,
+                2,
+                "Superb penthouse",
+                0,
+                "145 Brooks St New York, NY 10020",
+                true,
+                Utils.getTodayDate(),
+                "",
+                "Buck");
+
+        Property property3 = new Property(
+                Property.PropertyType.Loft,
+                "Manhattan",
+                1200000,
+                100,
+                2,
+                1,
+                1,
+                "Insane loft",
+                0,
+                "38 Wall St New York, NY 10005",
+                true,
+                Utils.getTodayDate(),
+                "",
+                "Samantha");
+
+        long propertyId1 = propertyDao.insert(property1);
+        long propertyId2 = propertyDao.insert(property2);
+        long propertyId3 = propertyDao.insert(property3);
+
+        long pictureId1 = propertyPictureDao.insert(new PropertyPicture(propertyId1, "Living room", ""));
+        propertyPictureDao.insert(new PropertyPicture(propertyId1, "Bathroom", ""));
+        propertyPictureDao.insert(new PropertyPicture(propertyId1, "Bedroom", ""));
+        propertyPictureDao.insert(new PropertyPicture(propertyId1, "Bedroom", ""));
+        propertyPictureDao.insert(new PropertyPicture(propertyId1, "Bedroom", ""));
+
+        long pictureId2 = propertyPictureDao.insert(new PropertyPicture(propertyId2, "Living room", ""));
+
+        long pictureId3 = propertyPictureDao.insert(new PropertyPicture(propertyId3, "Living room", ""));
+
+        propertyDao.updateMainPicture(propertyId1, pictureId1);
+        propertyDao.updateMainPicture(propertyId2, pictureId2);
+        propertyDao.updateMainPicture(propertyId3, pictureId3);
     }
 }

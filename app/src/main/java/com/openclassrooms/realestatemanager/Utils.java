@@ -75,4 +75,25 @@ public class Utils {
         return "$"+formattedNumber;
     }
 
+    /**
+     * Generate string from given square meters surface.
+     *
+     * @param surface surface value
+     * @return value followed by sq m
+     */
+    public static String surfaceString(int surface) {
+        Context context = MainApplication.getApplication();
+        return String.format(context.getString(R.string.placeholder_surface), surface);
+    }
+
+    /**
+     * Secure integer string
+     *
+     * @param integer surface value
+     * @return string representation of given integer
+     */
+    public static String integerString(int integer) {
+        Context context = MainApplication.getApplication();
+        return String.format(context.getString(R.string.placeholder_int), integer);
+    }
 }

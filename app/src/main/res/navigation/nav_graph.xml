@@ -9,11 +9,19 @@
         android:id="@+id/propertyListFragment"
         android:name="com.openclassrooms.realestatemanager.ui.fragment.PropertyListFragment"
         android:label="@string/toolbar_properties_list"
-        tools:layout="@layout/fragment_property_list"/>
+        tools:layout="@layout/fragment_property_list">
+        <action
+            android:id="@+id/navigateFromPropertyListToDetails"
+            app:destination="@id/propertyDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/currencyConverterFragment"
         android:name="com.openclassrooms.realestatemanager.ui.fragment.CurrencyConverterFragment"
         android:label="@string/toolbar_currency_converter"
         tools:layout="@layout/fragment_currency_converter"/>
+    <fragment
+        android:id="@+id/propertyDetailsFragment"
+        android:name="com.openclassrooms.realestatemanager.ui.fragment.PropertyDetailsFragment"
+        android:label="PropertyDetailsFragment" />
 
 </navigation>

@@ -19,7 +19,7 @@ import com.openclassrooms.realestatemanager.databinding.FragmentPropertyListBind
 import java.util.ArrayList;
 import java.util.List;
 
-public class PropertyListFragment extends Fragment {
+public class PropertyListFragment extends Fragment implements SelectPropertyCommand{
 
     private FragmentPropertyListBinding mBinding;
     private PropertyListViewModel mPropertyListViewModel;
@@ -44,15 +44,20 @@ public class PropertyListFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(layoutManager);
 
-        PropertyListAdapter mAdapter = new PropertyListAdapter(mProperties);
+        PropertyListAdapter mAdapter = new PropertyListAdapter(mProperties, this);
         mRecyclerView.setAdapter(mAdapter);
     }
 
     private void initObservers() {
-        mPropertyListViewModel.fetchAllProperties().observe(getActivity(), properties -> {
+        mPropertyListViewModel.fetchAllProperties().observe(requireActivity(), properties -> {
             mProperties.clear();
             mProperties.addAll(properties);
-            mRecyclerView.getAdapter().notifyDataSetChanged();
+            if (mRecyclerView.getAdapter() != null) mRecyclerView.getAdapter().notifyDataSetChanged();
         });
+    }
+
+    @Override
+    public void selectProperty(Property property) {
+        mPropertyListViewModel.setCurrentProperty(property);
     }
 }

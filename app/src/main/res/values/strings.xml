@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Real Estate Manager</string>
+    <string name="placeholder_surface">%d sq m</string>
+    <string name="placeholder_int">%d</string>
 
     <!-- Drawer -->
     <string name="menu_currency_converter">Currency converter</string>
@@ -7,5 +9,15 @@
     <!-- Toolbar -->
     <string name="toolbar_properties_list">Properties list</string>
     <string name="toolbar_currency_converter">Currency converter</string>
+
+    <!-- Property -->
+    <string name="property_description">Description</string>
+    <string name="property_surface">Surface</string>
+    <string name="property_number_of_rooms">Number of rooms</string>
+    <string name="property_number_of_bathrooms">Number of bathrooms</string>
+    <string name="property_number_of_bedrooms">Number of bedrooms</string>
+    <string name="property_location">Location</string>
+    <string name="property_listed_date">Listed on:</string>
+    <string name="property_agent">Real estate agent:</string>
 
 </resources>

@@ -19,6 +19,10 @@ public class PropertyRepository {
         return mPropertyDao.fetchAllProperties();
     }
 
+    public LiveData<Property> fetchProperty(long propertyId) {
+        return mPropertyDao.fetchProperty(propertyId);
+    }
+
     public void insert(Property property) {
         mPropertyDao.insert(property);
     }
