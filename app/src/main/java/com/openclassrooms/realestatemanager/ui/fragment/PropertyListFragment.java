@@ -1,7 +1,12 @@
 package com.openclassrooms.realestatemanager.ui.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -11,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.ViewModelFactory;
 import com.openclassrooms.realestatemanager.data.model.Property;
 import com.openclassrooms.realestatemanager.data.viewmodel.PropertyListViewModel;
@@ -35,6 +41,7 @@ public class PropertyListFragment extends Fragment implements SelectPropertyComm
 
         initRecyclerView();
         initObservers();
+        setHasOptionsMenu(true);
 
         return mBinding.getRoot();
     }
@@ -59,5 +66,26 @@ public class PropertyListFragment extends Fragment implements SelectPropertyComm
     @Override
     public void selectProperty(Property property) {
         mPropertyListViewModel.setCurrentProperty(property);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.property_list_menu, menu);
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_property_button:
+                // Navigate to add new property fragment
+                break;
+            case R.id.search_property_button:
+                // Navigate to search property fragment
+                break;
+            default:
+                Log.w("MeetingListFragment", "onOptionsItemSelected: didn't match any menu item");
+        }
+        return true;
     }
 }

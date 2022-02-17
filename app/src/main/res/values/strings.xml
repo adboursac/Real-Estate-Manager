@@ -9,6 +9,8 @@
     <!-- Toolbar -->
     <string name="toolbar_properties_list">Properties list</string>
     <string name="toolbar_currency_converter">Currency converter</string>
+    <string name="toolbar_add_new_property">Add a new property</string>
+    <string name="toolbar_search_property">Search property</string>
 
     <!-- Property -->
     <string name="property_description">Description</string>
