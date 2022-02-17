@@ -4,16 +4,14 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
-import androidx.room.OnConflictStrategy;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.openclassrooms.realestatemanager.Utils;
+import com.openclassrooms.realestatemanager.utils.Utils;
 import com.openclassrooms.realestatemanager.data.model.dao.PropertyDao;
 import com.openclassrooms.realestatemanager.data.model.dao.PropertyPictureDao;
 
-import java.time.LocalDate;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -63,7 +61,7 @@ public abstract class RealEstateManagerDatabase extends RoomDatabase {
         propertyPictureDao.deleteAll();
 
         Property property1 = new Property(
-                Property.PropertyType.Penthouse,
+                "Penthouse",
                 "Manhattan",
                 9000000,
                 280,
@@ -72,14 +70,17 @@ public abstract class RealEstateManagerDatabase extends RoomDatabase {
                 4,
                 "Beautiful penthouse",
                 0,
-                "4 Wall St New York, NY 10005",
+                "4",
+                "Wall St",
+                "10005",
+                "New York",
                 true,
                 Utils.getTodayDate(),
                 "",
                 "Bill");
 
         Property property2 = new Property(
-                Property.PropertyType.Apartment,
+                "Apartment",
                 "Brooklyn",
                 700000,
                 90,
@@ -88,14 +89,17 @@ public abstract class RealEstateManagerDatabase extends RoomDatabase {
                 2,
                 "Superb penthouse",
                 0,
-                "145 Brooks St New York, NY 10020",
+                "4",
+                "Wall St",
+                "10005",
+                "New York",
                 true,
                 Utils.getTodayDate(),
                 "",
                 "Buck");
 
         Property property3 = new Property(
-                Property.PropertyType.Loft,
+                "Loft",
                 "Manhattan",
                 1200000,
                 100,
@@ -104,7 +108,10 @@ public abstract class RealEstateManagerDatabase extends RoomDatabase {
                 1,
                 "Insane loft",
                 0,
-                "38 Wall St New York, NY 10005",
+                "4",
+                "Wall St",
+                "10005",
+                "New York",
                 true,
                 Utils.getTodayDate(),
                 "",

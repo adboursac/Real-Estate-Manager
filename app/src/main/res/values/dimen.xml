@@ -11,6 +11,7 @@
     <dimen name="text_size_medium">16sp</dimen>
     <dimen name="text_size_large">20sp</dimen>
     <dimen name="text_size_larger">24sp</dimen>
+    <dimen name="text_input_width_mini">128dp</dimen>
 
     <!-- Drawer -->
     <dimen name="drawer_header_height">224dp</dimen>

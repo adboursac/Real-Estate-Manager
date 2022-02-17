@@ -13,6 +13,9 @@
         <action
             android:id="@+id/navigateFromPropertyListToDetails"
             app:destination="@id/propertyDetailsFragment" />
+        <action
+            android:id="@+id/action_propertyListFragment_to_propertyAddFragment"
+            app:destination="@id/propertyAddFragment" />
     </fragment>
     <fragment
         android:id="@+id/currencyConverterFragment"
@@ -22,6 +25,10 @@
     <fragment
         android:id="@+id/propertyDetailsFragment"
         android:name="com.openclassrooms.realestatemanager.ui.fragment.PropertyDetailsFragment"
-        android:label="PropertyDetailsFragment" />
+        android:label="@string/toolbar_property_details" />
+    <fragment
+        android:id="@+id/propertyAddFragment"
+        android:name="com.openclassrooms.realestatemanager.ui.fragment.PropertyAddFragment"
+        android:label="@string/toolbar_add_new_property" />
 
 </navigation>

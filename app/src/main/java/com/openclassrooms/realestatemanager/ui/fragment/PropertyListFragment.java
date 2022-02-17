@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -78,7 +79,7 @@ public class PropertyListFragment extends Fragment implements SelectPropertyComm
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_property_button:
-                // Navigate to add new property fragment
+                Navigation.findNavController(getView()).navigate(R.id.propertyAddFragment);
                 break;
             case R.id.search_property_button:
                 // Navigate to search property fragment

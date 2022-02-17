@@ -1,10 +1,15 @@
-package com.openclassrooms.realestatemanager;
+package com.openclassrooms.realestatemanager.utils;
 
 import android.content.Context;
 import android.net.wifi.WifiManager;
 
+import com.openclassrooms.realestatemanager.MainApplication;
+import com.openclassrooms.realestatemanager.R;
+
 import java.text.NumberFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
@@ -40,7 +45,7 @@ public class Utils {
      * @return date in dd/MM/yyyy format
      */
     public static String getTodayDate() {
-        return LocalDate.now().format(getDefaultTimeFormatter());
+        return LocalDate.now().format(getDefaultDateTimeFormatter());
     }
 
     /**
@@ -59,20 +64,21 @@ public class Utils {
     /**
      * Provide a default date format in dd/MM/yyyy format
      *
-     * @return Date
+     * @return DateTimeFormatter with dd/MM/yyyy format
      */
-    public static DateTimeFormatter getDefaultTimeFormatter() {
+    public static DateTimeFormatter getDefaultDateTimeFormatter() {
         return DateTimeFormatter.ofPattern("dd/MM/yyyy");
     }
 
     /**
      * Generate a dollar price formatted string form given number
+     *
      * @param number number to convert to price String
      * @return example : 1000 integer value will return string $1'000
      */
     public static String dollarString(int number) {
         String formattedNumber = NumberFormat.getNumberInstance(Locale.US).format(number);
-        return "$"+formattedNumber;
+        return "$" + formattedNumber;
     }
 
     /**
@@ -96,4 +102,32 @@ public class Utils {
         Context context = MainApplication.getApplication();
         return String.format(context.getString(R.string.placeholder_int), integer);
     }
+
+    /**
+     * Convert date string to LocalDate object
+     *
+     * @param dateString  string date in dd/MM/yyyy format
+     * @param defaultDate default localDate to return if conversion fail
+     * @return LocalDate with dd/MM/yyyy format
+     */
+    public static LocalDate stringToDate(String dateString, LocalDate defaultDate) {
+        LocalDate date;
+        try {
+            date = LocalDate.parse(dateString, getDefaultDateTimeFormatter());
+        } catch (Exception e) {
+            date = defaultDate;
+        }
+        return date;
+    }
+
+    /**
+     * Convert given LocalDate to string in dd/MM/yyyy format
+     *
+     * @param date date to convert
+     * @return string in dd/MM/yyyy format
+     */
+    public static String dateToString(LocalDate date) {
+        return date.format(getDefaultDateTimeFormatter());
+    }
+
 }

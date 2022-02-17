@@ -27,11 +27,15 @@ public class PropertyRepository {
         return mPropertyDao.fetchProperty(propertyId);
     }
 
-    public void insert(Property property) {
-        mExecutor.execute(() -> mPropertyDao.insert(property));
+    public long insert(Property property) {
+        return mPropertyDao.insert(property);
     }
 
     public void delete(Property property) {
         mPropertyDao.delete(property.getId());
+    }
+
+    public ExecutorService getExecutor() {
+        return mExecutor;
     }
 }

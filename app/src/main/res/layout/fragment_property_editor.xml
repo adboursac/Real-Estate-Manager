@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_default">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pictures"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/property_picture_thumbnail_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/type_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pictures"
+            app:startIconDrawable="@drawable/ic_baseline_home_24"
+            app:startIconTint="@color/colorAccent" >
+
+            <AutoCompleteTextView
+                android:id="@+id/type"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/property_type"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/surface_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_surface"
+            android:imeOptions="actionDone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/type_layout"
+            app:startIconDrawable="@drawable/ic_outline_settings_overscan_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/surface"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/district_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_district"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/surface_layout"
+            app:startIconDrawable="@drawable/ic_baseline_location_on_24" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/district"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/price_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/district_layout"
+            app:startIconDrawable="@drawable/ic_baseline_money_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/number_of_room_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:layout_marginEnd="@dimen/margin_mini"
+            android:hint="@string/property_rooms"
+            app:layout_constraintEnd_toStartOf="@id/number_of_bedrooms_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/price_layout"
+            app:startIconDrawable="@drawable/ic_baseline_door_back_24" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/number_of_rooms"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/number_of_bedrooms_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_mini"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:layout_marginEnd="@dimen/margin_mini"
+            android:hint="@string/property_bedrooms"
+            app:layout_constraintEnd_toStartOf="@id/number_of_bathrooms_layout"
+            app:layout_constraintStart_toEndOf="@id/number_of_room_layout"
+            app:layout_constraintTop_toBottomOf="@id/price_layout"
+            app:startIconDrawable="@drawable/ic_baseline_local_hotel_24" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/number_of_bedrooms"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/number_of_bathrooms_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_mini"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_bathrooms"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/number_of_bedrooms_layout"
+            app:layout_constraintTop_toBottomOf="@id/price_layout"
+            app:startIconDrawable="@drawable/ic_baseline_bathtub_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/number_of_bathrooms"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/address_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            android:contentDescription="@string/property_address"
+            android:src="@drawable/ic_baseline_location_on_24"
+            android:tint="@color/colorAccent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/number_of_room_layout" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/address_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_mini"
+            android:layout_marginTop="@dimen/margin_default"
+            android:text="@string/property_address"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/address_icon"
+            app:layout_constraintTop_toBottomOf="@id/number_of_room_layout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/address_number_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="@dimen/text_input_width_mini"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_address_number"
+            app:layout_constraintEnd_toStartOf="@id/street_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/address_label">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/address_number"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/street_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_mini"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_street"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/address_number_layout"
+            app:layout_constraintTop_toBottomOf="@id/address_label">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/street"
+                android:maxLines="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/postal_code_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="@dimen/text_input_width_mini"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_postal_code"
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/address_number_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/postal_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/city_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_mini"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_city"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/postal_code_layout"
+            app:layout_constraintTop_toBottomOf="@id/address_number_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/city"
+                android:maxLines="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:id="@+id/available"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_default"
+            android:text="@string/property_available"
+            android:textColor="@color/grey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/postal_code_layout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/listed_date_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_listed_date"
+            app:layout_constraintEnd_toStartOf="@id/sold_date_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/available"
+            app:startIconDrawable="@drawable/ic_baseline_calendar_month_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/listed_date"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sold_date_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_mini"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_sold_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/listed_date_layout"
+            app:layout_constraintTop_toBottomOf="@id/available"
+            app:startIconDrawable="@drawable/ic_baseline_calendar_month_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/sold_date"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/real_estate_agent_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_agent"
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/listed_date_layout"
+            app:startIconDrawable="@drawable/ic_baseline_person_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/real_estate_agent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/description_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/real_estate_agent_layout"
+            app:startIconDrawable="@drawable/ic_baseline_description_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/button_save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/description_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+

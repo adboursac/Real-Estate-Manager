@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.openclassrooms.realestatemanager.MainApplication;
 import com.openclassrooms.realestatemanager.R;
-import com.openclassrooms.realestatemanager.Utils;
+import com.openclassrooms.realestatemanager.utils.Utils;
 import com.openclassrooms.realestatemanager.data.model.Property;
 import com.openclassrooms.realestatemanager.databinding.FragmentPropertyListItemBinding;
 

@@ -1,6 +1,5 @@
 package com.openclassrooms.realestatemanager.ui.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.openclassrooms.realestatemanager.Utils;
+import com.openclassrooms.realestatemanager.utils.Utils;
 import com.openclassrooms.realestatemanager.ViewModelFactory;
 import com.openclassrooms.realestatemanager.data.model.Property;
 import com.openclassrooms.realestatemanager.data.model.PropertyPicture;
@@ -36,9 +35,6 @@ public class PropertyDetailsFragment extends Fragment {
         mBinding = FragmentPropertyDetailsBinding.inflate(inflater, container, false);
         mPropertyListViewModel = new ViewModelProvider(requireActivity(), ViewModelFactory.getInstance(requireActivity())).get(PropertyListViewModel.class);
 
-        //currentPropertyId = PropertyDetailsFragmentArgs.fromBundle(requireArguments()).getPropertyId();
-
-        //populateDetails(currentProperty);
         initPicturesRecyclerView();
         initObservers();
 
@@ -69,7 +65,7 @@ public class PropertyDetailsFragment extends Fragment {
         mBinding.numberOfRooms.setText(Utils.integerString(property.getNumberOfRooms()));
         mBinding.numberOfBathrooms.setText(Utils.integerString(property.getNumberOfBathrooms()));
         mBinding.numberOfBedrooms.setText(Utils.integerString(property.getNumberOfBedrooms()));
-        mBinding.location.setText(property.getAddress());
+        mBinding.location.setText(property.getFullAddress());
         mBinding.description.setText(property.getDescription());
         mBinding.listedDate.setText(property.getListedDate());
         mBinding.realEstateAgent.setText(property.getRealEstateAgent());
