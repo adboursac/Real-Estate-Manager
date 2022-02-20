@@ -44,4 +44,8 @@ public class PropertyListViewModel extends ViewModel {
     public LiveData<List<PropertyPicture>> getCurrentPropertyPictures() {
         return mCurrentPropertyPictures;
     }
+
+    public void addProperty(Property property) {
+        mPropertyRepository.insert(property);
+    }
 }

@@ -29,6 +29,10 @@ public abstract class RealEstateManagerDatabase extends RoomDatabase {
 
     public abstract PropertyPictureDao propertyPictureDao();
 
+    public ExecutorService getDatabaseWriteExecutor() {
+        return databaseWriteExecutor;
+    }
+
     // --- INSTANCE ---
     public static RealEstateManagerDatabase getDatabase(Context context) {
         if (INSTANCE == null) {

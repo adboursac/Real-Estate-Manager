@@ -6,13 +6,17 @@ import com.openclassrooms.realestatemanager.data.model.Property;
 import com.openclassrooms.realestatemanager.data.model.dao.PropertyDao;
 
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 
 public class PropertyRepository {
 
     private final PropertyDao mPropertyDao;
+    private final ExecutorService mExecutor;
 
-    public PropertyRepository(PropertyDao propertyDao) {
+    public PropertyRepository(PropertyDao propertyDao, ExecutorService executor) {
         mPropertyDao = propertyDao;
+        mExecutor = executor;
     }
 
     public LiveData<List<Property>> fetchAllProperties() {
@@ -24,7 +28,7 @@ public class PropertyRepository {
     }
 
     public void insert(Property property) {
-        mPropertyDao.insert(property);
+        mExecutor.execute(() -> mPropertyDao.insert(property));
     }
 
     public void delete(Property property) {
