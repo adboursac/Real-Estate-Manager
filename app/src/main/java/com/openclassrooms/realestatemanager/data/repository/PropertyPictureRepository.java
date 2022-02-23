@@ -22,8 +22,8 @@ public class PropertyPictureRepository {
         return mPropertyPictureDao.fetchPictures(projectId);
     }
 
-    public void insert(PropertyPicture propertyPicture) {
-        mPropertyPictureDao.insert(propertyPicture);
+    public long insert(PropertyPicture propertyPicture) {
+        return mPropertyPictureDao.insert(propertyPicture);
     }
 
     public void delete(PropertyPicture propertyPicture) {

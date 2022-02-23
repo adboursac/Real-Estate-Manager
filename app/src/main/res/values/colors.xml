@@ -8,5 +8,5 @@
     <color name="greyLight">#CFCFCF</color>
     <color name="black">#000000</color>
     <color name="transparentDark">#80000000</color>
-
+    <color name="transparent">#00000000</color>
 </resources>

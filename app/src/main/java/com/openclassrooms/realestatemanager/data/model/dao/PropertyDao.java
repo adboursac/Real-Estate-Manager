@@ -18,8 +18,8 @@ public interface PropertyDao {
     @Query("SELECT * FROM Property WHERE property_id = :propertyId LIMIT 1")
     LiveData<Property> fetchProperty(long propertyId);
 
-    @Query("UPDATE Property SET mainPictureId = :pictureId WHERE property_id =:propertyId")
-    int updateMainPicture(long propertyId, long pictureId);
+    @Query("UPDATE Property SET mainPictureId = :pictureId, mainPictureUri = :uri WHERE property_id =:propertyId")
+    int updateMainPicture(long propertyId, long pictureId, String uri);
 
     @Insert
     long insert(Property property);

@@ -18,6 +18,7 @@ public class PropertyListViewModel extends ViewModel {
 
     private MutableLiveData<Property> mCurrentProperty = new MutableLiveData<>();
     private LiveData<List<PropertyPicture>> mCurrentPropertyPictures;
+    private int mMainPictureIndex = -1;
 
     public PropertyListViewModel(PropertyRepository propertyRepository, PropertyPictureRepository propertyPictureRepository) {
         mPropertyRepository = propertyRepository;
@@ -49,5 +50,9 @@ public class PropertyListViewModel extends ViewModel {
                 mPropertyPictureRepository.insert(p);
             }
         });
+    }
+
+    public void setMainPictureId(int pictureIndex) {
+        mMainPictureIndex = pictureIndex;
     }
 }

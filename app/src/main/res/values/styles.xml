@@ -22,4 +22,11 @@
         <item name="startIconTint">@color/colorAccent</item>
     </style>
 
+    <!-- textInputLayout form theme -->
+    <style name="AppTheme.textInputLayoutPictureManager" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/colorAccent</item>
+        <item name="hintTextColor">@color/colorAccent</item>
+        <item name="startIconTint">@color/colorAccent</item>
+    </style>
+
 </resources>

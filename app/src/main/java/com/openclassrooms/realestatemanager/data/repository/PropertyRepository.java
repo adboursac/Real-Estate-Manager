@@ -27,6 +27,11 @@ public class PropertyRepository {
         return mPropertyDao.fetchProperty(propertyId);
     }
 
+    public int updateMainPicture(long propertyId, long pictureId, String uri) {
+        return mPropertyDao.updateMainPicture(propertyId, pictureId, uri);
+    }
+
+
     public long insert(Property property) {
         return mPropertyDao.insert(property);
     }

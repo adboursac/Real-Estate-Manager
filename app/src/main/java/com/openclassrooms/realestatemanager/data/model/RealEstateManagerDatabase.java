@@ -69,7 +69,8 @@ public abstract class RealEstateManagerDatabase extends RoomDatabase {
                 2,
                 4,
                 "Beautiful penthouse",
-                0,
+                -1L,
+                "",
                 "4",
                 "Wall St",
                 "10005",
@@ -88,7 +89,8 @@ public abstract class RealEstateManagerDatabase extends RoomDatabase {
                 1,
                 2,
                 "Superb penthouse",
-                0,
+                -1L,
+                "",
                 "4",
                 "Wall St",
                 "10005",
@@ -107,7 +109,8 @@ public abstract class RealEstateManagerDatabase extends RoomDatabase {
                 1,
                 1,
                 "Insane loft",
-                0,
+                -1L,
+                "",
                 "4",
                 "Wall St",
                 "10005",
@@ -130,9 +133,5 @@ public abstract class RealEstateManagerDatabase extends RoomDatabase {
         long pictureId2 = propertyPictureDao.insert(new PropertyPicture(propertyId2, "Living room", ""));
 
         long pictureId3 = propertyPictureDao.insert(new PropertyPicture(propertyId3, "Living room", ""));
-
-        propertyDao.updateMainPicture(propertyId1, pictureId1);
-        propertyDao.updateMainPicture(propertyId2, pictureId2);
-        propertyDao.updateMainPicture(propertyId3, pictureId3);
     }
 }

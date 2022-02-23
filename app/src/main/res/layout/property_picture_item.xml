@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/picture"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="@dimen/property_picture_thumbnail_size"
+        android:layout_height="@dimen/property_picture_thumbnail_size"
         android:background="@color/greyLight"
         android:contentDescription="@null"
         android:src="@drawable/ic_baseline_home_24"
@@ -17,8 +17,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/mainPictureIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_mini"
+        android:tint="@color/colorAccent"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_baseline_looks_one_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/descriptionLayout"
+        android:id="@+id/buttonsLayout"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:background="@color/transparentDark"

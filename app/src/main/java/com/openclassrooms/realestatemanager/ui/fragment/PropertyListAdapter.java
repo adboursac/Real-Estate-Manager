@@ -2,6 +2,7 @@ package com.openclassrooms.realestatemanager.ui.fragment;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +23,11 @@ import java.util.List;
 public class PropertyListAdapter extends RecyclerView.Adapter<PropertyListAdapter.ViewHolder> {
 
     private final List<Property> mProperties;
-    private SelectPropertyCommand mSelectPropertyCommand;
+    private CommandSelectProperty mCommandSelectProperty;
 
-    public PropertyListAdapter(List<Property> properties, SelectPropertyCommand selectPropertyCommand) {
+    public PropertyListAdapter(List<Property> properties, CommandSelectProperty commandSelectProperty) {
         mProperties = properties;
-        mSelectPropertyCommand = selectPropertyCommand;
+        mCommandSelectProperty = commandSelectProperty;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -48,14 +49,14 @@ public class PropertyListAdapter extends RecyclerView.Adapter<PropertyListAdapte
     @Override
     public void onBindViewHolder(@NonNull PropertyListAdapter.ViewHolder holder, int position) {
         Property property = mProperties.get(position);
-        Context context = MainApplication.getApplication();
-        //if (property.getMainPictureId() != 0)
 
-        holder.mBinding.type.setText(property.getType().toString());
+        holder.mBinding.type.setText(property.getType());
         holder.mBinding.district.setText(property.getDistrict());
         holder.mBinding.price.setText(Utils.dollarString(property.getPrice()));
 
-        renderItem(holder.itemView, holder.mBinding.price, false);
+        if (property.getMainPictureId() != -1) Utils.setPicture(property.getMainPictureUri(), holder.mBinding.picture);
+
+        renderItemColors(holder.itemView, holder.mBinding.price, false);
         holder.itemView.setOnClickListener(view -> selectItem(view, holder.mBinding.price, property));
     }
 
@@ -65,12 +66,12 @@ public class PropertyListAdapter extends RecyclerView.Adapter<PropertyListAdapte
     }
 
     private void selectItem(View view, TextView priceTextView, Property property) {
-        renderItem(view, priceTextView, true);
-        mSelectPropertyCommand.selectProperty(property);
-        Navigation.findNavController(view).navigate(R.id.navigateFromPropertyListToDetails);
+        renderItemColors(view, priceTextView, true);
+        mCommandSelectProperty.selectProperty(property);
+        Navigation.findNavController(view).navigate(R.id.propertyDetailsFragment);
     }
 
-    private void renderItem(View view, TextView priceTextView, boolean selected) {
+    private void renderItemColors(View view, TextView priceTextView, boolean selected) {
         Resources resources = MainApplication.getContext().getResources();
         if (selected) {
             view.setBackgroundColor(resources.getColor(R.color.colorAccent));

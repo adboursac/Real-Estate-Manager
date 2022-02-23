@@ -20,6 +20,7 @@ public class Property {
     private int numberOfBedrooms;
     private String description;
     private long mainPictureId;
+    private String mainPictureUri;
     private String addressNumber;
     private String street;
     private String postalCode;
@@ -30,7 +31,7 @@ public class Property {
     private String soldDate;
     private String realEstateAgent;
 
-    public Property(String type, String district, int price, int surface, int numberOfRooms, int numberOfBathrooms, int numberOfBedrooms, String description, long mainPictureId, String addressNumber, String street, String postalCode, String city, boolean available, String listedDate, String soldDate, String realEstateAgent) {
+    public Property(String type, String district, int price, int surface, int numberOfRooms, int numberOfBathrooms, int numberOfBedrooms, String description, long mainPictureId, String mainPictureUri, String addressNumber, String street, String postalCode, String city, boolean available, String listedDate, String soldDate, String realEstateAgent) {
         this.type = type;
         this.district = district;
         this.price = price;
@@ -40,6 +41,7 @@ public class Property {
         this.numberOfBedrooms = numberOfBedrooms;
         this.description = description;
         this.mainPictureId = mainPictureId;
+        this.mainPictureUri = mainPictureUri;
         this.addressNumber = addressNumber;
         this.street = street;
         this.postalCode = postalCode;
@@ -125,6 +127,10 @@ public class Property {
     public void setMainPictureId(long mainPictureId) {
         this.mainPictureId = mainPictureId;
     }
+
+    public String getMainPictureUri() { return mainPictureUri; }
+
+    public void setMainPictureUri(String mainPictureUri) { this.mainPictureUri = mainPictureUri; }
 
     public String getAddressNumber() {
         return addressNumber;

@@ -2,7 +2,9 @@ package com.openclassrooms.realestatemanager.utils;
 
 import android.content.Context;
 import android.net.wifi.WifiManager;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.openclassrooms.realestatemanager.MainApplication;
 import com.openclassrooms.realestatemanager.R;
 
@@ -128,6 +130,18 @@ public class Utils {
      */
     public static String dateToString(LocalDate date) {
         return date.format(getDefaultDateTimeFormatter());
+    }
+
+    public static void setPicture(String uri, ImageView imageView) {
+        if (uri == null) {
+            imageView.setImageResource(R.drawable.ic_baseline_home_24);
+            return;
+        }
+        Glide.with(MainApplication.getContext())
+                .load(uri)
+                //.apply(new RequestOptions().centerCrop())
+                //.error(R.drawable.ic_sharp_no_photography_24)
+                .into(imageView);
     }
 
 }

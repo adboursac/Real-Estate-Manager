@@ -1,6 +1,7 @@
 package com.openclassrooms.realestatemanager.ui.fragment;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.openclassrooms.realestatemanager.data.model.PropertyPicture;
 import com.openclassrooms.realestatemanager.databinding.PropertyPictureItemBinding;
+import com.openclassrooms.realestatemanager.utils.Utils;
 
 import java.util.List;
 
@@ -39,12 +41,20 @@ public class PropertyPictureAdapter extends RecyclerView.Adapter<PropertyPicture
     public void onBindViewHolder(@NonNull PropertyPictureAdapter.ViewHolder holder, int position) {
         PropertyPicture picture = mPictures.get(position);
 
-        //if (picture.getUri() != null)
         holder.mBinding.description.setText(picture.getDescription());
+        Utils.setPicture(picture.getUri(), holder.mBinding.picture);
+        holder.itemView.setOnClickListener(view -> onItemClick(view, position));
+        displayMainPictureIcon(holder.mBinding.mainPictureIcon, position);
     }
 
     @Override
     public int getItemCount() {
         return mPictures.size();
+    }
+
+    public void onItemClick(View view, int position) { }
+
+    public void displayMainPictureIcon(View view, int position) {
+        view.setVisibility(View.GONE);
     }
 }

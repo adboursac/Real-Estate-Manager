@@ -26,7 +26,7 @@ import com.openclassrooms.realestatemanager.databinding.FragmentPropertyListBind
 import java.util.ArrayList;
 import java.util.List;
 
-public class PropertyListFragment extends Fragment implements SelectPropertyCommand{
+public class PropertyListFragment extends Fragment implements CommandSelectProperty {
 
     private FragmentPropertyListBinding mBinding;
     private PropertyListViewModel mPropertyListViewModel;

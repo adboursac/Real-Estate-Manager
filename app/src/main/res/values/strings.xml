@@ -37,6 +37,12 @@
     <string name="property_successfully_created">New property has been successfully created</string>
     <string name="property_not_correct">Property fields are not correct</string>
 
+    <!-- Property picture -->
+    <string name="picture_is_main">Main picture</string>
+    <string name="picture_add_new">Add a new picture</string>
+    <string name="picture_select_camera_or_library">Select camera or library</string>
+    <string name="picture_description">Description</string>
+
     <!-- Property type -->
     <string-array name="property_types" >
         <item>Apartment</item>
