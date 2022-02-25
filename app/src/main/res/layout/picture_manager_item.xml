@@ -23,7 +23,7 @@
         android:background="@color/transparentDark"
         app:layout_constraintBottom_toBottomOf="@id/picture"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintHeight_percent="0.16"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout

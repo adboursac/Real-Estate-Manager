@@ -8,57 +8,68 @@
         android:id="@+id/picture"
         android:layout_width="@dimen/list_thumbnail_size"
         android:layout_height="@dimen/list_thumbnail_size"
-        android:contentDescription="@null"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/picture_description"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_baseline_home_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/type"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:layout_marginTop="@dimen/margin_mini"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="@string/property_description"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_size_larger"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/picture"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/district"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="@string/property_description"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_size_large"
-        app:layout_constraintBottom_toTopOf="@+id/price"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/picture"
-        app:layout_constraintTop_toBottomOf="@id/type" />
-
-    <TextView
-        android:id="@+id/price"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="@string/property_description"
-        android:textAlignment="textStart"
-        android:textColor="@color/colorAccent"
-        android:textSize="@dimen/text_size_larger"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/picture" />
+        android:padding="@dimen/margin_small">
+
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/property_type"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/district" />
+
+        <TextView
+            android:id="@+id/district"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/property_district"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/type"
+            app:layout_constraintBottom_toTopOf="@id/price"/>
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/property_price"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_size_large"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/district"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
