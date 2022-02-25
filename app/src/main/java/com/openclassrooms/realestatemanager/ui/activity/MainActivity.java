@@ -58,15 +58,15 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
 
     /**
-     * Hide bottom navigation and toolbar for specifics fragments
-     * ( pictureManagerFragment )
+     * Hide toolbar for specifics fragments
+     * ( pictureManagerFragment, pictureViewerFragment)
      */
     @SuppressLint("NonConstantResourceId")
-    @SuppressWarnings("SwitchStatementWithTooFewBranches")
     private void ConfigureNavigationComponentsDisplayRules() {
         mNavController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             switch (destination.getId()) {
                 case R.id.pictureManagerFragment:
+                case R.id.pictureViewerFragment:
                     showToolbar(false);
                     break;
                 default:
@@ -85,6 +85,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         mBinding.toolbar.setVisibility(visibility);
     }
 
+    @SuppressWarnings("all")
+    // mNavController.getCurrentDestination().getId() shall never be null
     @Override
     public void onBackPressed() {
         //Close Drawer if it's open

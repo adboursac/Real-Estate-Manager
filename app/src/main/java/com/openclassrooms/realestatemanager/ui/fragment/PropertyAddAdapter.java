@@ -8,7 +8,7 @@ import com.openclassrooms.realestatemanager.data.model.PropertyPicture;
 
 import java.util.List;
 
-public class PropertyAddAdapter extends PropertyPictureAdapter {
+public class PropertyAddAdapter extends PropertyDetailsAdapter {
 
     private final CommandPictureManager mCommandPictureManager;
 

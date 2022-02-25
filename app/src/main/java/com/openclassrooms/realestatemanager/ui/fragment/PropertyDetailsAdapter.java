@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.openclassrooms.realestatemanager.data.model.PropertyPicture;
@@ -13,11 +14,11 @@ import com.openclassrooms.realestatemanager.utils.Utils;
 
 import java.util.List;
 
-public class PropertyPictureAdapter extends RecyclerView.Adapter<PropertyPictureAdapter.ViewHolder> {
+public class PropertyDetailsAdapter extends RecyclerView.Adapter<PropertyDetailsAdapter.ViewHolder> {
 
     private final List<PropertyPicture> mPictures;
 
-    public PropertyPictureAdapter(List<PropertyPicture> pictures) {
+    public PropertyDetailsAdapter(List<PropertyPicture> pictures) {
         mPictures = pictures;
     }
 
@@ -32,13 +33,13 @@ public class PropertyPictureAdapter extends RecyclerView.Adapter<PropertyPicture
 
     @NonNull
     @Override
-    public PropertyPictureAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new PropertyPictureAdapter.ViewHolder(PropertyPictureItemBinding.inflate(LayoutInflater.from(parent.getContext()),
+    public PropertyDetailsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new PropertyDetailsAdapter.ViewHolder(PropertyPictureItemBinding.inflate(LayoutInflater.from(parent.getContext()),
                 parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PropertyPictureAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PropertyDetailsAdapter.ViewHolder holder, int position) {
         PropertyPicture picture = mPictures.get(position);
 
         holder.mBinding.description.setText(picture.getDescription());
@@ -52,7 +53,11 @@ public class PropertyPictureAdapter extends RecyclerView.Adapter<PropertyPicture
         return mPictures.size();
     }
 
-    public void onItemClick(View view, int position) { }
+    public void onItemClick(View view, int position) {
+        Navigation.findNavController(view).navigate(
+                PropertyDetailsFragmentDirections.fromDetailsFragmentToPictureViewer().setPictureRowIndex(position)
+        );
+    }
 
     public void displayMainPictureIcon(View view, int position) {
         view.setVisibility(View.GONE);

@@ -18,7 +18,11 @@
     <fragment
         android:id="@+id/propertyDetailsFragment"
         android:name="com.openclassrooms.realestatemanager.ui.fragment.PropertyDetailsFragment"
-        android:label="@string/toolbar_property_details" />
+        android:label="@string/toolbar_property_details" >
+        <action
+            android:id="@+id/fromDetailsFragmentToPictureViewer"
+            app:destination="@id/pictureViewerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/propertyAddFragment"
         android:name="com.openclassrooms.realestatemanager.ui.fragment.PropertyAddFragment"
@@ -31,6 +35,15 @@
         android:id="@+id/pictureManagerFragment"
         android:name="com.openclassrooms.realestatemanager.ui.fragment.PictureManagerFragment"
         android:label="PictureManagerFragment" >
+        <argument
+            android:name="pictureRowIndex"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+    <fragment
+        android:id="@+id/pictureViewerFragment"
+        android:name="com.openclassrooms.realestatemanager.ui.fragment.PictureViewerFragment"
+        android:label="PictureViewerFragment" >
         <argument
             android:name="pictureRowIndex"
             app:argType="integer"

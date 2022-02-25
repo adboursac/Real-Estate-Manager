@@ -46,7 +46,7 @@ public class PropertyDetailsFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        PropertyPictureAdapter mAdapter = new PropertyPictureAdapter(mPictures);
+        PropertyDetailsAdapter mAdapter = new PropertyDetailsAdapter(mPictures);
         mRecyclerView.setAdapter(mAdapter);
     }
 
