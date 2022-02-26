@@ -25,13 +25,16 @@ public class Property {
     private String street;
     private String postalCode;
     private String city;
-    //TODO: Points of interest, school, shop, parcs...
+    private boolean poiSwimmingPool;
+    private boolean poiSchool;
+    private boolean poiShopping;
+    private boolean poiParking;
     private boolean available;
     private String listedDate;
     private String soldDate;
     private String realEstateAgent;
 
-    public Property(String type, String district, int price, int surface, int numberOfRooms, int numberOfBathrooms, int numberOfBedrooms, String description, long mainPictureId, String mainPictureUri, String addressNumber, String street, String postalCode, String city, boolean available, String listedDate, String soldDate, String realEstateAgent) {
+    public Property(String type, String district, int price, int surface, int numberOfRooms, int numberOfBathrooms, int numberOfBedrooms, String description, long mainPictureId, String mainPictureUri, String addressNumber, String street, String postalCode, String city, boolean poiSwimmingPool, boolean poiSchool, boolean poiShopping, boolean poiParking, boolean available, String listedDate, String soldDate, String realEstateAgent) {
         this.type = type;
         this.district = district;
         this.price = price;
@@ -46,6 +49,10 @@ public class Property {
         this.street = street;
         this.postalCode = postalCode;
         this.city = city;
+        this.poiSwimmingPool = poiSwimmingPool;
+        this.poiSchool = poiSchool;
+        this.poiShopping = poiShopping;
+        this.poiParking = poiParking;
         this.available = available;
         this.listedDate = listedDate;
         this.soldDate = soldDate;
@@ -100,17 +107,13 @@ public class Property {
         return numberOfBathrooms;
     }
 
-    public void setNumberOfBathrooms(int numberOfBathrooms) {
-        this.numberOfBathrooms = numberOfBathrooms;
-    }
+    public void setNumberOfBathrooms(int numberOfBathrooms) { this.numberOfBathrooms = numberOfBathrooms; }
 
     public int getNumberOfBedrooms() {
         return numberOfBedrooms;
     }
 
-    public void setNumberOfBedrooms(int numberOfBedrooms) {
-        this.numberOfBedrooms = numberOfBedrooms;
-    }
+    public void setNumberOfBedrooms(int numberOfBedrooms) { this.numberOfBedrooms = numberOfBedrooms; }
 
     public String getDescription() {
         return description;
@@ -162,6 +165,36 @@ public class Property {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public boolean hasPoiSwimmingPool() {
+        return poiSwimmingPool;
+    }
+
+    public void setPoiSwimmingPool(boolean poiSwimmingPool) { this.poiSwimmingPool = poiSwimmingPool; }
+
+    public boolean hasPoiSchool() {
+        return poiSchool;
+    }
+
+    public void setPoiSchool(boolean poiSchool) {
+        this.poiSchool = poiSchool;
+    }
+
+    public boolean hasPoiShopping() {
+        return poiShopping;
+    }
+
+    public void setPoiShopping(boolean poiShopping) {
+        this.poiShopping = poiShopping;
+    }
+
+    public boolean hasPoiParking() {
+        return poiParking;
+    }
+
+    public void setPoiParking(boolean poiParking) {
+        this.poiParking = poiParking;
     }
 
     public String getFullAddress() {

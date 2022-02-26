@@ -4,13 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineHalfWidth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pictures"
         android:layout_width="match_parent"
@@ -19,223 +12,260 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/surfaceIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:contentDescription="@null"
-        android:src="@drawable/ic_outline_settings_overscan_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pictures" />
-
-    <TextView
-        android:id="@+id/surfaceLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:text="@string/property_surface"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/surfaceIcon"
-        app:layout_constraintTop_toTopOf="@id/surfaceIcon" />
-
-    <TextView
-        android:id="@+id/surface"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:text="@string/property_surface"
-        app:layout_constraintStart_toEndOf="@id/surfaceIcon"
-        app:layout_constraintTop_toBottomOf="@id/surfaceLabel" />
-
-    <ImageView
-        android:id="@+id/numberOfRoomsIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:layout_marginTop="@dimen/margin_large"
-        android:contentDescription="@null"
-        android:src="@drawable/ic_baseline_home_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/surfaceIcon" />
-
-    <TextView
-        android:id="@+id/numberOfRoomsLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:text="@string/property_number_of_rooms"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/numberOfRoomsIcon"
-        app:layout_constraintTop_toTopOf="@id/numberOfRoomsIcon" />
-
-    <TextView
-        android:id="@+id/numberOfRooms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:text="@string/property_number_of_rooms"
-        app:layout_constraintStart_toEndOf="@id/numberOfRoomsIcon"
-        app:layout_constraintTop_toBottomOf="@id/numberOfRoomsLabel" />
-
-    <ImageView
-        android:id="@+id/numberOfBathroomsIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:layout_marginTop="@dimen/margin_large"
-        android:contentDescription="@null"
-        android:src="@drawable/ic_baseline_bathtub_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/numberOfRoomsIcon" />
-
-    <TextView
-        android:id="@+id/numberOfBathroomsLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:text="@string/property_number_of_bathrooms"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/numberOfBathroomsIcon"
-        app:layout_constraintTop_toTopOf="@id/numberOfBathroomsIcon" />
-
-    <TextView
-        android:id="@+id/numberOfBathrooms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:text="@string/property_number_of_bathrooms"
-        app:layout_constraintStart_toEndOf="@id/numberOfBathroomsIcon"
-        app:layout_constraintTop_toBottomOf="@id/numberOfBathroomsLabel" />
-
-    <ImageView
-        android:id="@+id/numberOfBedroomsIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:layout_marginTop="@dimen/margin_large"
-        android:contentDescription="@null"
-        android:src="@drawable/ic_baseline_local_hotel_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/numberOfBathroomsIcon" />
-
-    <TextView
-        android:id="@+id/numberOfBedroomsLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:text="@string/property_number_of_bedrooms"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/numberOfBedroomsIcon"
-        app:layout_constraintTop_toTopOf="@id/numberOfBedroomsIcon" />
-
-    <TextView
-        android:id="@+id/numberOfBedrooms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:text="@string/property_number_of_bedrooms"
-        app:layout_constraintStart_toEndOf="@id/numberOfBedroomsIcon"
-        app:layout_constraintTop_toBottomOf="@id/numberOfBedroomsLabel" />
-
-    <ImageView
-        android:id="@+id/locationIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:contentDescription="@null"
-        android:src="@drawable/ic_baseline_location_on_24"
-        app:layout_constraintStart_toStartOf="@id/guidelineHalfWidth"
-        app:layout_constraintTop_toBottomOf="@id/pictures" />
-
-    <TextView
-        android:id="@+id/locationLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:text="@string/property_address"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/locationIcon"
-        app:layout_constraintTop_toTopOf="@id/locationIcon" />
-
-    <TextView
-        android:id="@+id/location"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:layout_marginEnd="@dimen/margin_default"
-        android:text="@string/property_address"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/locationIcon"
-        app:layout_constraintTop_toBottomOf="@id/locationLabel" />
-
-    <TextView
-        android:id="@+id/descriptionLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:text="@string/property_description"
-        android:textSize="@dimen/text_size_medium"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/numberOfBedrooms" />
-
-    <TextView
-        android:id="@+id/description"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:text="@string/property_description"
-        android:textAlignment="textStart"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="0dp"
+        android:padding="@dimen/margin_default"
+        app:layout_constraintTop_toBottomOf="@id/pictures"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/descriptionLabel" />
+        app:layout_constraintEnd_toEndOf="parent" >
 
-    <TextView
-        android:id="@+id/listedDateLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:layout_marginTop="@dimen/margin_default"
-        android:text="@string/property_listed_date"
-        android:textSize="@dimen/text_size_medium"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/description" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineHalfWidth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
-    <TextView
-        android:id="@+id/listedDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_mini"
-        android:text="@string/property_listed_date"
-        android:textAlignment="textStart"
-        app:layout_constraintBottom_toBottomOf="@id/listedDateLabel"
-        app:layout_constraintStart_toEndOf="@id/listedDateLabel" />
+        <ImageView
+            android:id="@+id/surfaceIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_outline_settings_overscan_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/realEstateAgentLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:layout_marginTop="@dimen/margin_mini"
-        android:text="@string/property_agent"
-        android:textSize="@dimen/text_size_medium"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/listedDate" />
+        <TextView
+            android:id="@+id/surfaceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:text="@string/property_surface"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/surfaceIcon"
+            app:layout_constraintTop_toTopOf="@id/surfaceIcon" />
 
-    <TextView
-        android:id="@+id/realEstateAgent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_mini"
-        android:text="@string/property_agent"
-        android:textAlignment="textStart"
-        app:layout_constraintBottom_toBottomOf="@id/realEstateAgentLabel"
-        app:layout_constraintStart_toEndOf="@id/realEstateAgentLabel" />
+        <TextView
+            android:id="@+id/surface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:text="@string/property_surface"
+            app:layout_constraintStart_toEndOf="@id/surfaceIcon"
+            app:layout_constraintTop_toBottomOf="@id/surfaceLabel" />
+
+        <ImageView
+            android:id="@+id/numberOfRoomsIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_baseline_home_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/surfaceIcon" />
+
+        <TextView
+            android:id="@+id/numberOfRoomsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:text="@string/property_number_of_rooms"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/numberOfRoomsIcon"
+            app:layout_constraintTop_toTopOf="@id/numberOfRoomsIcon" />
+
+        <TextView
+            android:id="@+id/numberOfRooms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:text="@string/property_number_of_rooms"
+            app:layout_constraintStart_toEndOf="@id/numberOfRoomsIcon"
+            app:layout_constraintTop_toBottomOf="@id/numberOfRoomsLabel" />
+
+
+        <ImageView
+            android:id="@+id/numberOfBedroomsIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_baseline_local_hotel_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/numberOfRoomsIcon" />
+
+        <TextView
+            android:id="@+id/numberOfBedroomsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:text="@string/property_number_of_bedrooms"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/numberOfBedroomsIcon"
+            app:layout_constraintTop_toTopOf="@id/numberOfBedroomsIcon" />
+
+        <TextView
+            android:id="@+id/numberOfBedrooms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:text="@string/property_number_of_bedrooms"
+            app:layout_constraintStart_toEndOf="@id/numberOfBedroomsIcon"
+            app:layout_constraintTop_toBottomOf="@id/numberOfBedroomsLabel" />
+
+        <ImageView
+            android:id="@+id/numberOfBathroomsIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_baseline_bathtub_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/numberOfBedroomsIcon" />
+
+        <TextView
+            android:id="@+id/numberOfBathroomsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:text="@string/property_number_of_bathrooms"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/numberOfBathroomsIcon"
+            app:layout_constraintTop_toTopOf="@id/numberOfBathroomsIcon" />
+
+        <TextView
+            android:id="@+id/numberOfBathrooms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:text="@string/property_number_of_bathrooms"
+            app:layout_constraintStart_toEndOf="@id/numberOfBathroomsIcon"
+            app:layout_constraintTop_toBottomOf="@id/numberOfBathroomsLabel" />
+
+        <ImageView
+            android:id="@+id/poiIcon"
+            android:layout_width="@dimen/icon_small"
+            android:layout_height="@dimen/icon_small"
+            android:layout_marginTop="@dimen/margin_large"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_baseline_check_circle_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/numberOfBathroomsIcon" />
+
+        <TextView
+            android:id="@+id/poiLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:text="@string/property_poi"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/poiIcon"
+            app:layout_constraintTop_toTopOf="@id/poiIcon" />
+
+        <TextView
+            android:id="@+id/poi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:text="@string/property_poi"
+            app:layout_constraintStart_toEndOf="@id/poiIcon"
+            app:layout_constraintTop_toBottomOf="@id/poiLabel" />
+
+        <ImageView
+            android:id="@+id/locationIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_baseline_location_on_24"
+            app:layout_constraintStart_toStartOf="@id/guidelineHalfWidth"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/locationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:text="@string/property_address"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/locationIcon"
+            app:layout_constraintTop_toTopOf="@id/locationIcon" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:text="@string/property_address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/locationIcon"
+            app:layout_constraintTop_toBottomOf="@id/locationLabel" />
+
+        <TextView
+            android:id="@+id/descriptionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            android:text="@string/property_description"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/poi" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/property_description"
+            android:textAlignment="textStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionLabel" />
+
+        <TextView
+            android:id="@+id/listedDateLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            android:text="@string/property_listed_date"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/description" />
+
+        <TextView
+            android:id="@+id/listedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_mini"
+            android:text="@string/property_listed_date"
+            android:textAlignment="textStart"
+            app:layout_constraintBottom_toBottomOf="@id/listedDateLabel"
+            app:layout_constraintStart_toEndOf="@id/listedDateLabel" />
+
+        <TextView
+            android:id="@+id/realEstateAgentLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:text="@string/property_agent"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/listedDate" />
+
+        <TextView
+            android:id="@+id/realEstateAgent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_mini"
+            android:text="@string/property_agent"
+            android:textAlignment="textStart"
+            app:layout_constraintBottom_toBottomOf="@id/realEstateAgentLabel"
+            app:layout_constraintStart_toEndOf="@id/realEstateAgentLabel" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,13 @@
 package com.openclassrooms.realestatemanager.data.viewmodel;
 
+import android.content.Context;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.openclassrooms.realestatemanager.MainApplication;
+import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.data.model.Property;
 import com.openclassrooms.realestatemanager.data.model.PropertyPicture;
 import com.openclassrooms.realestatemanager.data.repository.PropertyPictureRepository;
@@ -54,5 +58,15 @@ public class PropertyListViewModel extends ViewModel {
 
     public void setMainPictureId(int pictureIndex) {
         mMainPictureIndex = pictureIndex;
+    }
+
+
+    public String generatePoiString(Property property) {
+        Context context = MainApplication.getContext();
+        String poiString = property.hasPoiSwimmingPool() ? context.getString(R.string.property_poi_swimming_pool) + ", " : "";
+        poiString += property.hasPoiParking() ? context.getString(R.string.property_poi_parking) + ", " : "";
+        poiString += property.hasPoiSchool() ? context.getString(R.string.property_poi_school) + ", " : "";
+        poiString += property.hasPoiShopping() ? context.getString(R.string.property_poi_shopping) : "";
+        return poiString;
     }
 }

@@ -30,12 +30,12 @@
                 android:id="@+id/add_picture_button_icon"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/list_thumbnail_size"
+                android:contentDescription="@string/picture_add_new"
                 android:src="@drawable/ic_baseline_home_24"
                 app:layout_constraintBottom_toTopOf="@id/add_picture_button_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/picture_add_new" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/add_picture_button_text"
@@ -197,28 +197,91 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
+            android:id="@+id/poi_icon"
+            android:layout_width="@dimen/icon_small"
+            android:layout_height="@dimen/icon_small"
+            android:layout_marginTop="@dimen/margin_default"
+            android:contentDescription="@string/property_address"
+            android:src="@drawable/ic_baseline_check_circle_24"
+            android:tint="@color/colorAccent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/number_of_room_layout" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/poi_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_mini"
+            android:text="@string/property_poi"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/address_icon"
+            app:layout_constraintTop_toTopOf="@id/poi_icon" />
+
+        <CheckBox
+            android:id="@+id/poi_swimming_pool"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_default"
+            android:text="@string/property_poi_swimming_pool"
+            android:textColor="@color/grey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/poi_icon" />
+
+        <CheckBox
+            android:id="@+id/poi_school"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginStart="@dimen/margin_default"
+            android:text="@string/property_poi_school"
+            android:textColor="@color/grey"
+            app:layout_constraintStart_toEndOf="@id/poi_swimming_pool"
+            app:layout_constraintTop_toBottomOf="@id/poi_icon" />
+
+        <CheckBox
+            android:id="@+id/poi_parking"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_default"
+            android:text="@string/property_poi_parking"
+            android:textColor="@color/grey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/poi_swimming_pool" />
+
+        <CheckBox
+            android:id="@+id/poi_shopping"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_default"
+            android:text="@string/property_poi_shopping"
+            android:textColor="@color/grey"
+            app:layout_constraintStart_toStartOf="@id/poi_school"
+            app:layout_constraintTop_toBottomOf="@id/poi_swimming_pool" />
+
+        <ImageView
             android:id="@+id/address_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_medium"
             android:contentDescription="@string/property_address"
             android:src="@drawable/ic_baseline_location_on_24"
             android:tint="@color/colorAccent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/number_of_room_layout" />
+            app:layout_constraintTop_toBottomOf="@id/poi_parking" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/address_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_mini"
-            android:layout_marginTop="@dimen/margin_default"
             android:text="@string/property_address"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/text_size_medium"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/address_icon"
-            app:layout_constraintTop_toBottomOf="@id/number_of_room_layout" />
+            app:layout_constraintBottom_toBottomOf="@id/address_icon" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/address_number_layout"
