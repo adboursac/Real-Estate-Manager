@@ -93,8 +93,12 @@ public class PropertyDetailsFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.edit_property_button:
+            case R.id.editPropertyButton:
                 navigateToEditFragment();
+                break;
+            case R.id.deletePropertyButton:
+                mPropertyListViewModel.deleteCurrentProperty();
+                Navigation.findNavController(getView()).navigate(R.id.propertyListFragment);
                 break;
             default:
                 Log.w("MeetingListFragment", "onOptionsItemSelected: didn't match any menu item");

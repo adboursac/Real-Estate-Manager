@@ -46,20 +46,15 @@ public class PropertyListViewModel extends ViewModel {
         return mCurrentPropertyPictures;
     }
 
-    public void createProperty(Property property, List<PropertyPicture> picturesList) {
+    public void deleteCurrentProperty() {
+        Property currentProperty = mCurrentProperty.getValue();
+        List<PropertyPicture> pictures = mCurrentPropertyPictures.getValue();
+        if (currentProperty == null || pictures == null) return;
         mPropertyRepository.getExecutor().execute(() -> {
-            long propertyId = mPropertyRepository.insert(property);
-            for (PropertyPicture p : picturesList) {
-                p.setPropertyId(propertyId);
-                mPropertyPictureRepository.insert(p);
-            }
+            for (PropertyPicture p : pictures) mPropertyPictureRepository.delete(p);
+            mPropertyRepository.delete(currentProperty);
         });
     }
-
-    public void setMainPictureId(int pictureIndex) {
-        mMainPictureIndex = pictureIndex;
-    }
-
 
     public String generatePoiString(Property property) {
         Context context = MainApplication.getContext();

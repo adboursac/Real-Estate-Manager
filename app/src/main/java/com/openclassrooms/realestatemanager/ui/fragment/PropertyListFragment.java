@@ -66,6 +66,11 @@ public class PropertyListFragment extends Fragment implements CommandSelectPrope
         });
     }
 
+    private void initDeleteButton() {
+        //mBinding
+        //mPropertyListViewModel.
+    }
+
     @Override
     public void selectProperty(Property property) {
         mPropertyListViewModel.setCurrentProperty(property);

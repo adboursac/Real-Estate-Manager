@@ -3,8 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/edit_property_button"
+        android:id="@+id/editPropertyButton"
         android:icon="@drawable/ic_baseline_edit_24"
+        android:title="@string/toolbar_edit_property"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/deletePropertyButton"
+        android:icon="@drawable/ic_baseline_delete_24"
         android:title="@string/toolbar_edit_property"
         app:showAsAction="ifRoom" />
 </menu>
