@@ -45,6 +45,9 @@ public class PropertyAddViewModel extends ViewModel {
     public void saveProperty(Property property) {
         mPropertyRepository.getExecutor().execute(() -> {
             int mainPictureRowIndex;
+
+            // If main picture has not been set yet,
+            // We set mainPictureId as -1L
             if (mMainPictureRowIndex.getValue() == null) {
                 property.setMainPictureId(-1L);
                 mainPictureRowIndex = -1;
@@ -83,7 +86,8 @@ public class PropertyAddViewModel extends ViewModel {
         List<PropertyPicture> pictures = mCurrentPropertyPictures.getValue();
         if (pictures == null || pictures.size() == 0) return;
 
-        // We check if the picture we are going to delete is main. We reset main picture if needed
+        // We check if the picture we are going to delete is main
+        // If it is so, we set first picture as main picture
         int mainPictureRowIndex = mMainPictureRowIndex.getValue();
         if (pictureRowIndex == mainPictureRowIndex) setMainPictureRowIndex(0);
 

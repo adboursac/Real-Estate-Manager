@@ -1,17 +1,24 @@
 package com.openclassrooms.realestatemanager.ui.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.openclassrooms.realestatemanager.R;
+import com.openclassrooms.realestatemanager.data.viewmodel.PropertyEditViewModel;
 import com.openclassrooms.realestatemanager.utils.Utils;
 import com.openclassrooms.realestatemanager.ViewModelFactory;
 import com.openclassrooms.realestatemanager.data.model.Property;
@@ -28,6 +35,7 @@ public class PropertyDetailsFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private PropertyListViewModel mPropertyListViewModel;
     private List<PropertyPicture> mPictures = new ArrayList<>();
+    private Property mProperty;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -39,6 +47,7 @@ public class PropertyDetailsFragment extends Fragment {
         initPicturesRecyclerView();
         initObservers();
 
+        setHasOptionsMenu(true);
         return mBinding.getRoot();
     }
 
@@ -62,6 +71,8 @@ public class PropertyDetailsFragment extends Fragment {
     }
 
     private void populateDetails(Property property) {
+        mProperty = property;
+
         mBinding.surface.setText(Utils.surfaceString(property.getSurface()));
         mBinding.numberOfRooms.setText(Utils.integerString(property.getNumberOfRooms()));
         mBinding.numberOfBathrooms.setText(Utils.integerString(property.getNumberOfBathrooms()));
@@ -71,5 +82,31 @@ public class PropertyDetailsFragment extends Fragment {
         mBinding.description.setText(property.getDescription());
         mBinding.listedDate.setText(property.getListedDate());
         mBinding.realEstateAgent.setText(property.getRealEstateAgent());
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.property_details_menu, menu);
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.edit_property_button:
+                navigateToEditFragment();
+                break;
+            default:
+                Log.w("MeetingListFragment", "onOptionsItemSelected: didn't match any menu item");
+        }
+        return true;
+    }
+
+    private void navigateToEditFragment() {
+        // To avoid requesting already loaded data we prepare edit view model now
+        PropertyEditViewModel editViewModel = new ViewModelProvider(requireActivity(), ViewModelFactory.getInstance(requireActivity())).get(PropertyEditViewModel.class);
+        editViewModel.setCurrentPropertyState(mProperty);
+        editViewModel.setCurrentPropertyPictures(mPictures);
+        Navigation.findNavController(getView()).navigate(R.id.propertyEditFragment);
     }
 }

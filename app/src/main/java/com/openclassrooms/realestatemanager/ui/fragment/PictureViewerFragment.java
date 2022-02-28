@@ -52,7 +52,7 @@ public class PictureViewerFragment extends Fragment {
     }
 
     private void goToSelectedPictureRowIndex() {
-        int pictureRowIndex = PictureManagerFragmentArgs.fromBundle(requireArguments()).getPictureRowIndex();
+        int pictureRowIndex = PictureViewerFragmentArgs.fromBundle(requireArguments()).getPictureRowIndex();
         if (pictureRowIndex != -1) mBinding.viewPager.setCurrentItem(pictureRowIndex);
     }
 }

@@ -232,4 +232,30 @@ public class Property {
     public void setRealEstateAgent(String realEstateAgent) {
         this.realEstateAgent = realEstateAgent;
     }
+
+    public boolean hasSameContent(Property property) {
+        if (!type.contentEquals(property.getType())) return false;
+        if (!district.contentEquals(property.getDistrict())) return false;
+        if (price != property.getPrice()) return false;
+        if (surface != property.getSurface()) return false;
+        if (numberOfRooms != property.getNumberOfRooms()) return false;
+        if (numberOfBathrooms != property.getNumberOfBathrooms()) return false;
+        if (numberOfBedrooms != property.getNumberOfBedrooms()) return false;
+        if (!description.contentEquals(property.getDescription())) return false;
+        if (mainPictureId != property.getMainPictureId()) return false;
+        if (price != property.getPrice()) return false;
+        if (!addressNumber.contentEquals(property.getAddressNumber())) return false;
+        if (!street.contentEquals(property.getStreet())) return false;
+        if (!postalCode.contentEquals(property.getPostalCode())) return false;
+        if (!city.contentEquals(property.getCity())) return false;
+        if (poiSwimmingPool != property.hasPoiSwimmingPool()) return false;
+        if (poiSchool != property.hasPoiSchool()) return false;
+        if (poiShopping != property.hasPoiShopping()) return false;
+        if (poiParking != property.hasPoiParking()) return false;
+        if (available != property.isAvailable()) return false;
+        if (!listedDate.contentEquals(property.getListedDate())) return false;
+        if (!soldDate.contentEquals(property.getSoldDate())) return false;
+        if (!realEstateAgent.contentEquals(property.getRealEstateAgent())) return false;
+        return true;
+    }
 }

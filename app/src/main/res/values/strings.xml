@@ -12,12 +12,13 @@
     <string name="toolbar_add_new_property">Add a new property</string>
     <string name="toolbar_search_property">Search property</string>
     <string name="toolbar_property_details">Property details</string>
+    <string name="toolbar_edit_property">Edit property</string>
 
     <!-- Property -->
     <string name="property_type">Type</string>
     <string name="property_district">District</string>
     <string name="property_price">Price</string>
-    <string name="property_surface">Surface (sq m)</string>
+    <string name="property_surface">Surface</string>
     <string name="property_available">Available</string>
     <string name="property_number_of_rooms">Number of rooms</string>
     <string name="property_number_of_bathrooms">Number of bathrooms</string>
@@ -35,6 +36,7 @@
     <string name="property_sold_date">Sold on:</string>
     <string name="property_agent">Real estate agent:</string>
     <string name="property_successfully_created">New property has been successfully created</string>
+    <string name="property_successfully_updated">Property has been successfully updated</string>
     <string name="property_not_correct">Property fields are not correct</string>
     <string name="property_poi">Points of interest</string>
     <string name="property_poi_swimming_pool">Swimming pool</string>

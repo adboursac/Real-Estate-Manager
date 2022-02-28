@@ -18,7 +18,7 @@ import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.ViewModelFactory;
 import com.openclassrooms.realestatemanager.data.model.Property;
 import com.openclassrooms.realestatemanager.data.model.PropertyPicture;
-import com.openclassrooms.realestatemanager.data.viewmodel.PropertyAddViewModel;
+import com.openclassrooms.realestatemanager.data.viewmodel.PropertyEditViewModel;
 import com.openclassrooms.realestatemanager.databinding.FragmentPropertyEditorBinding;
 import com.openclassrooms.realestatemanager.utils.DatePicker;
 import com.openclassrooms.realestatemanager.utils.Utils;
@@ -26,23 +26,23 @@ import com.openclassrooms.realestatemanager.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import static androidx.navigation.Navigation.*;
+import static androidx.navigation.Navigation.findNavController;
 
-public class PropertyAddFragment extends Fragment implements CommandPictureManager {
+public class PropertyEditFragment extends Fragment implements CommandPictureManager {
 
-    private PropertyAddViewModel mPropertyAddViewModel;
+    private PropertyEditViewModel mPropertyEditViewModel;
     private FragmentPropertyEditorBinding mBinding;
     private RecyclerView mRecyclerView;
     private ArrayAdapter<String> mPropertyTypeDropMenuAdapter;
-    private PropertyAddAdapter mPropertyAddAdapter;
+    private PropertyEditAdapter mPropertyEditAdapter;
     private List<PropertyPicture> mPictures = new ArrayList<>();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        mBinding = FragmentPropertyEditorBinding.inflate(inflater, container, false);
-        mPropertyAddViewModel = new ViewModelProvider(requireActivity(), ViewModelFactory.getInstance(requireActivity())).get(PropertyAddViewModel.class);
+        mBinding = com.openclassrooms.realestatemanager.databinding.FragmentPropertyEditorBinding.inflate(inflater, container, false);
+        mPropertyEditViewModel = new ViewModelProvider(requireActivity(), ViewModelFactory.getInstance(requireActivity())).get(PropertyEditViewModel.class);
 
         initPicturesRecyclerView();
         initObservers();
@@ -55,17 +55,17 @@ public class PropertyAddFragment extends Fragment implements CommandPictureManag
     }
 
     private void initObservers() {
-        mPropertyAddViewModel.getCurrentProperty().observe(requireActivity(), property -> {
+        mPropertyEditViewModel.getCurrentPropertyState().observe(requireActivity(), property -> {
             updateInputs(property);
-            mPropertyAddAdapter.notifyDataSetChanged();
+            mPropertyEditAdapter.notifyDataSetChanged();
         });
 
-        mPropertyAddViewModel.getMainPictureRowIndex().observe(requireActivity(), index -> mPropertyAddAdapter.notifyDataSetChanged());
+        mPropertyEditViewModel.getMainPictureRowIndex().observe(requireActivity(), index -> mPropertyEditAdapter.notifyDataSetChanged());
 
-        mPropertyAddViewModel.getCurrentPropertyPictures().observe(requireActivity(), pictures -> {
+        mPropertyEditViewModel.getCurrentPropertyPictures().observe(requireActivity(), pictures -> {
             mPictures.clear();
             mPictures.addAll(pictures);
-            mPropertyAddAdapter.notifyDataSetChanged();
+            mPropertyEditAdapter.notifyDataSetChanged();
             updateRecyclerViewLabel();
         });
     }
@@ -75,8 +75,8 @@ public class PropertyAddFragment extends Fragment implements CommandPictureManag
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        mPropertyAddAdapter = new PropertyAddAdapter(mPictures, this);
-        mRecyclerView.setAdapter(mPropertyAddAdapter);
+        mPropertyEditAdapter = new PropertyEditAdapter(mPictures, this);
+        mRecyclerView.setAdapter(mPropertyEditAdapter);
 
         mBinding.addPictureButton.setOnClickListener(view -> findNavController(view).navigate(R.id.pictureManagerFragment));
     }
@@ -94,8 +94,7 @@ public class PropertyAddFragment extends Fragment implements CommandPictureManag
     private void updateAvailableRelatedViews(boolean available) {
         if (available) {
             mBinding.soldDateLayout.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             mBinding.soldDate.setText("");
             mBinding.soldDateLayout.setVisibility(View.VISIBLE);
         }
@@ -116,13 +115,13 @@ public class PropertyAddFragment extends Fragment implements CommandPictureManag
     }
 
     private void saveProperty(View view) {
-        if (! verifyInputs()) {
+        if (!verifyInputs()) {
             Toast.makeText(requireActivity(), getString(R.string.property_not_correct), Toast.LENGTH_LONG).show();
             return;
         }
         Property property = generatePropertyFromInputsWithoutMainPicture();
-        mPropertyAddViewModel.saveProperty(property);
-        Toast.makeText(requireActivity(), getString(R.string.property_successfully_created), Toast.LENGTH_LONG).show();
+        mPropertyEditViewModel.saveProperty(property);
+        Toast.makeText(requireActivity(), getString(R.string.property_successfully_updated), Toast.LENGTH_LONG).show();
         findNavController(view).navigate(R.id.propertyListFragment);
     }
 
@@ -170,7 +169,8 @@ public class PropertyAddFragment extends Fragment implements CommandPictureManag
         if (mBinding.postalCode.getText().toString().isEmpty()) return false;
         if (mBinding.city.getText().toString().isEmpty()) return false;
         if (mBinding.listedDate.getText().toString().isEmpty()) return false;
-        if (!mBinding.available.isChecked() && mBinding.soldDate.getText().toString().isEmpty()) return false;
+        if (!mBinding.available.isChecked() && mBinding.soldDate.getText().toString().isEmpty())
+            return false;
         if (mBinding.realEstateAgent.getText().toString().isEmpty()) return false;
         if (mBinding.description.getText().toString().isEmpty()) return false;
         return true;
@@ -199,8 +199,7 @@ public class PropertyAddFragment extends Fragment implements CommandPictureManag
         if (property.isAvailable()) {
             mBinding.available.setChecked(true);
             mBinding.soldDateLayout.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             mBinding.available.setChecked(false);
             mBinding.soldDate.setText(property.getSoldDate());
             mBinding.soldDateLayout.setVisibility(View.VISIBLE);
@@ -212,7 +211,7 @@ public class PropertyAddFragment extends Fragment implements CommandPictureManag
 
     @Override
     public int getMainPictureIndex() {
-        Integer pictureIndex = mPropertyAddViewModel.getMainPictureRowIndex().getValue();
+        Integer pictureIndex = mPropertyEditViewModel.getMainPictureRowIndex().getValue();
         if (pictureIndex == null) return -1;
         return pictureIndex;
     }

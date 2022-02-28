@@ -21,6 +21,9 @@ public interface PropertyPictureDao {
     @Query("DELETE FROM PropertyPicture WHERE property_picture_id = :propertyPictureId")
     int delete(long propertyPictureId);
 
+    @Query("UPDATE PropertyPicture SET description = :description WHERE property_picture_id = :propertyPictureId")
+    int updateDescription(String description, long propertyPictureId);
+
     @Query("DELETE FROM PropertyPicture")
     void deleteAll();
 }

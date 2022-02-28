@@ -66,6 +66,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         mNavController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             switch (destination.getId()) {
                 case R.id.pictureManagerFragment:
+                case R.id.pictureManagerEditFragment:
                 case R.id.pictureViewerFragment:
                     showToolbar(false);
                     break;

@@ -43,8 +43,8 @@ public class PropertyListFragment extends Fragment implements CommandSelectPrope
 
         initRecyclerView();
         initObservers();
-        setHasOptionsMenu(true);
 
+        setHasOptionsMenu(true);
         return mBinding.getRoot();
     }
 

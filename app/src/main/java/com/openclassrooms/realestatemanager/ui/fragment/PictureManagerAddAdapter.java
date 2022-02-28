@@ -15,12 +15,12 @@ import com.openclassrooms.realestatemanager.utils.Utils;
 
 import java.util.List;
 
-public class PictureManagerAdapter extends RecyclerView.Adapter<PictureManagerAdapter.ViewHolder> {
+public class PictureManagerAddAdapter extends RecyclerView.Adapter<PictureManagerAddAdapter.ViewHolder> {
 
     private final List<PropertyPicture> mPictures;
     private CommandPictureManager mCommandPictureManager;
 
-    public PictureManagerAdapter(List<PropertyPicture> pictures, CommandPictureManager commandPictureManager) {
+    public PictureManagerAddAdapter(List<PropertyPicture> pictures, CommandPictureManager commandPictureManager) {
         mPictures = pictures;
         mCommandPictureManager = commandPictureManager;
     }
@@ -36,13 +36,13 @@ public class PictureManagerAdapter extends RecyclerView.Adapter<PictureManagerAd
 
     @NonNull
     @Override
-    public PictureManagerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new PictureManagerAdapter.ViewHolder(PictureManagerItemBinding.inflate(LayoutInflater.from(parent.getContext()),
+    public PictureManagerAddAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new PictureManagerAddAdapter.ViewHolder(PictureManagerItemBinding.inflate(LayoutInflater.from(parent.getContext()),
                 parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PictureManagerAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PictureManagerAddAdapter.ViewHolder holder, int position) {
         PropertyPicture picture = mPictures.get(position);
 
         holder.mBinding.description.setText(picture.getDescription());

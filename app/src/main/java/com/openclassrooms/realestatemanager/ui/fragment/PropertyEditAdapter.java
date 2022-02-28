@@ -8,11 +8,11 @@ import com.openclassrooms.realestatemanager.data.model.PropertyPicture;
 
 import java.util.List;
 
-public class PropertyAddAdapter extends PropertyDetailsAdapter {
+public class PropertyEditAdapter extends PropertyDetailsAdapter {
 
     private final CommandPictureManager mCommandPictureManager;
 
-    public PropertyAddAdapter(List<PropertyPicture> pictures, CommandPictureManager commandPictureManager) {
+    public PropertyEditAdapter(List<PropertyPicture> pictures, CommandPictureManager commandPictureManager) {
         super(pictures);
         mCommandPictureManager = commandPictureManager;
     }
@@ -20,7 +20,7 @@ public class PropertyAddAdapter extends PropertyDetailsAdapter {
     @Override
     public void onItemClick(View view, int position) {
         Navigation.findNavController(view).navigate(
-                PropertyAddFragmentDirections.fromAddFragmentToPictureManagerAdd().setPictureRowIndex(position)
+                PropertyEditFragmentDirections.fromEditFragmentToPictureManagerEdit().setPictureRowIndex(position)
         );
     }
 

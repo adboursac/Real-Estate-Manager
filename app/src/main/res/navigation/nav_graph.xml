@@ -28,12 +28,12 @@
         android:name="com.openclassrooms.realestatemanager.ui.fragment.PropertyAddFragment"
         android:label="@string/toolbar_add_new_property" >
         <action
-            android:id="@+id/fromAddFragmentToPictureManager"
+            android:id="@+id/fromAddFragmentToPictureManagerAdd"
             app:destination="@id/pictureManagerFragment" />
     </fragment>
     <fragment
         android:id="@+id/pictureManagerFragment"
-        android:name="com.openclassrooms.realestatemanager.ui.fragment.PictureManagerFragment"
+        android:name="com.openclassrooms.realestatemanager.ui.fragment.PictureManagerAddFragment"
         android:label="PictureManagerFragment" >
         <argument
             android:name="pictureRowIndex"
@@ -44,6 +44,23 @@
         android:id="@+id/pictureViewerFragment"
         android:name="com.openclassrooms.realestatemanager.ui.fragment.PictureViewerFragment"
         android:label="PictureViewerFragment" >
+        <argument
+            android:name="pictureRowIndex"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+    <fragment
+        android:id="@+id/propertyEditFragment"
+        android:name="com.openclassrooms.realestatemanager.ui.fragment.PropertyEditFragment"
+        android:label="@string/toolbar_edit_property" >
+        <action
+            android:id="@+id/fromEditFragmentToPictureManagerEdit"
+            app:destination="@id/pictureManagerEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pictureManagerEditFragment"
+        android:name="com.openclassrooms.realestatemanager.ui.fragment.PictureManagerEditFragment"
+        android:label="PictureManagerEditFragment" >
         <argument
             android:name="pictureRowIndex"
             app:argType="integer"

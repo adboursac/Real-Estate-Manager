@@ -10,6 +10,7 @@ import com.openclassrooms.realestatemanager.data.model.RealEstateManagerDatabase
 import com.openclassrooms.realestatemanager.data.repository.PropertyPictureRepository;
 import com.openclassrooms.realestatemanager.data.repository.PropertyRepository;
 import com.openclassrooms.realestatemanager.data.viewmodel.PropertyAddViewModel;
+import com.openclassrooms.realestatemanager.data.viewmodel.PropertyEditViewModel;
 import com.openclassrooms.realestatemanager.data.viewmodel.PropertyListViewModel;
 
 public class ViewModelFactory implements ViewModelProvider.Factory {
@@ -26,7 +27,6 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
             synchronized (ViewModelFactory.class) {
                 if (sFactory == null) {
                     sFactory = new ViewModelFactory(context);
-                    System.out.println("Just Created "+context.getClass());
                 }
             }
         }
@@ -49,6 +49,9 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
         }
         else if (modelClass.isAssignableFrom(PropertyAddViewModel.class)) {
             return (T) new PropertyAddViewModel(mPropertyRepository, mPropertyPictureRepository);
+        }
+        else if (modelClass.isAssignableFrom(PropertyEditViewModel.class)) {
+            return (T) new PropertyEditViewModel(mPropertyRepository, mPropertyPictureRepository);
         }
     throw new IllegalArgumentException("Unknown ViewModel class");
     }
