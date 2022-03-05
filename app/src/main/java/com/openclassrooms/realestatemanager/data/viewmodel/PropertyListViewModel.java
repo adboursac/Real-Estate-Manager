@@ -2,6 +2,7 @@ package com.openclassrooms.realestatemanager.data.viewmodel;
 
 import android.content.Context;
 
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -13,6 +14,7 @@ import com.openclassrooms.realestatemanager.data.model.PropertyPicture;
 import com.openclassrooms.realestatemanager.data.repository.PropertyPictureRepository;
 import com.openclassrooms.realestatemanager.data.repository.PropertyRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PropertyListViewModel extends ViewModel {
@@ -22,15 +24,58 @@ public class PropertyListViewModel extends ViewModel {
 
     private MutableLiveData<Property> mCurrentProperty = new MutableLiveData<>();
     private LiveData<List<PropertyPicture>> mCurrentPropertyPictures;
-    private int mMainPictureIndex = -1;
+
+    private MutableLiveData<List<Property>> mCurrentPropertiesList = new MutableLiveData(new ArrayList<>());
+
+    private boolean displayingSearch = false;
 
     public PropertyListViewModel(PropertyRepository propertyRepository, PropertyPictureRepository propertyPictureRepository) {
         mPropertyRepository = propertyRepository;
         mPropertyPictureRepository = propertyPictureRepository;
     }
 
-    public LiveData<List<Property>> fetchAllProperties() {
-        return mPropertyRepository.fetchAllProperties();
+    public LiveData<List<Property>> getCurrentPropertiesList() {
+        return mCurrentPropertiesList;
+    }
+
+    public void fetchAllProperties(LifecycleOwner lifecycleOwner) {
+        displayingSearch = false;
+        mPropertyRepository.fetchAllProperties().observe(lifecycleOwner, mCurrentPropertiesList::setValue);
+    }
+
+    public void searchProperties(LifecycleOwner lifecycleOwner,
+                                 String type,
+                                 String district,
+                                 Integer minPrice,
+                                 Integer maxPrice,
+                                 Integer minSurface,
+                                 Integer maxSurface,
+                                 Integer minRooms,
+                                 Integer maxRooms,
+                                 boolean hasSwimmingPool,
+                                 boolean hasSchool,
+                                 boolean hasShopping,
+                                 boolean hasParking
+    ) {
+        displayingSearch = true;
+        mPropertyRepository.searchProperty(
+                type,
+                district,
+                minPrice,
+                maxPrice,
+                minSurface,
+                maxSurface,
+                minRooms,
+                maxRooms,
+                hasSwimmingPool,
+                hasSchool,
+                hasShopping,
+                hasParking
+        ).observe(lifecycleOwner, mCurrentPropertiesList::setValue);
+    }
+
+    public boolean isDisplayingSearch() {
+        return displayingSearch;
     }
 
     public LiveData<Property> getCurrentProperty() {

@@ -9,8 +9,14 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/search_property_button"
+        android:id="@+id/list_toolbar_search_property_button"
         android:icon="@drawable/ic_baseline_search_24"
+        android:title="@string/toolbar_search_property"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/list_toolbar_clear_search_property_button"
+        android:icon="@drawable/ic_baseline_search_off_24"
         android:title="@string/toolbar_search_property"
         app:showAsAction="ifRoom" />
 </menu>

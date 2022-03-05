@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_default">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/type_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_mini"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconDrawable="@drawable/ic_baseline_home_24"
+            app:startIconTint="@color/colorAccent">
+
+            <AutoCompleteTextView
+                android:id="@+id/type"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/property_type"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/district_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_district"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/type_layout"
+            app:startIconDrawable="@drawable/ic_baseline_location_on_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/district"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/price_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            android:contentDescription="@string/property_address"
+            android:src="@drawable/ic_baseline_money_24"
+            android:tint="@color/colorAccent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/district_layout" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/price_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_mini"
+            android:text="@string/property_price"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/price_icon"
+            app:layout_constraintStart_toEndOf="@id/price_icon" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/price_min_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_price_min"
+            app:layout_constraintEnd_toStartOf="@id/price_max_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/price_icon">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/price_min"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/price_max_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_mini"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_price_max"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/price_min_layout"
+            app:layout_constraintTop_toBottomOf="@id/price_icon">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/price_max"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/surface_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            android:contentDescription="@string/property_surface"
+            android:src="@drawable/ic_outline_settings_overscan_24"
+            android:tint="@color/colorAccent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/price_min_layout" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/surface_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_mini"
+            android:text="@string/property_surface"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/surface_icon"
+            app:layout_constraintStart_toEndOf="@id/surface_icon" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/surface_min_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_surface_min"
+            app:layout_constraintEnd_toStartOf="@id/surface_max_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/surface_icon">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/surface_min"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/surface_max_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_mini"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_surface_max"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/surface_min_layout"
+            app:layout_constraintTop_toBottomOf="@id/surface_icon">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/surface_max"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/number_of_rooms_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            android:contentDescription="@string/property_surface"
+            android:src="@drawable/ic_baseline_door_back_24"
+            android:tint="@color/colorAccent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/surface_min_layout" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/number_of_rooms_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_mini"
+            android:text="@string/property_number_of_rooms"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/number_of_rooms_icon"
+            app:layout_constraintStart_toEndOf="@id/number_of_rooms_icon" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/number_of_rooms_min_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_number_of_rooms_min"
+            app:layout_constraintEnd_toStartOf="@id/number_of_rooms_max_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/number_of_rooms_icon">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/number_of_rooms_min"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/number_of_rooms_max_layout"
+            style="@style/AppTheme.textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_mini"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:hint="@string/property_number_of_rooms_max"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/number_of_rooms_min_layout"
+            app:layout_constraintTop_toBottomOf="@id/number_of_rooms_icon">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/number_of_rooms_max"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/poi_icon"
+            android:layout_width="@dimen/icon_small"
+            android:layout_height="@dimen/icon_small"
+            android:layout_marginTop="@dimen/margin_default"
+            android:contentDescription="@string/property_address"
+            android:src="@drawable/ic_baseline_check_circle_24"
+            android:tint="@color/colorAccent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/number_of_rooms_min_layout" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/poi_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_mini"
+            android:text="@string/property_poi"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/poi_icon"
+            app:layout_constraintTop_toTopOf="@id/poi_icon" />
+
+        <CheckBox
+            android:id="@+id/poi_swimming_pool"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_default"
+            android:text="@string/property_poi_swimming_pool"
+            android:textColor="@color/grey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/poi_icon" />
+
+        <CheckBox
+            android:id="@+id/poi_school"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_default"
+            android:text="@string/property_poi_school"
+            android:textColor="@color/grey"
+            app:layout_constraintStart_toEndOf="@id/poi_swimming_pool"
+            app:layout_constraintTop_toBottomOf="@id/poi_icon" />
+
+        <CheckBox
+            android:id="@+id/poi_parking"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_default"
+            android:text="@string/property_poi_parking"
+            android:textColor="@color/grey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/poi_swimming_pool" />
+
+        <CheckBox
+            android:id="@+id/poi_shopping"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_default"
+            android:text="@string/property_poi_shopping"
+            android:textColor="@color/grey"
+            app:layout_constraintStart_toStartOf="@id/poi_school"
+            app:layout_constraintTop_toBottomOf="@id/poi_swimming_pool" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/button_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/poi_parking" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

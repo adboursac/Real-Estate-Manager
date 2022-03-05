@@ -33,7 +33,6 @@ public class PropertyRepository {
         return mPropertyDao.updateMainPicture(propertyId, pictureId, uri);
     }
 
-
     public long insert(Property property) {
         return mPropertyDao.insert(property);
     }
@@ -44,28 +43,54 @@ public class PropertyRepository {
 
     public int updateProperty(Property property) {
         return mPropertyDao.updateProperty(property.getId(),
-                    property.getType(),
-                    property.getDistrict(),
-                    property.getPrice(),
-                    property.getSurface(),
-                    property.getNumberOfBedrooms(),
-                    property.getNumberOfBathrooms(),
-                    property.getNumberOfBedrooms(),
-                    property.getDescription(),
-                    property.getMainPictureId(),
-                    property.getMainPictureUri(),
-                    property.getAddressNumber(),
-                    property.getStreet(),
-                    property.getPostalCode(),
-                    property.getCity(),
-                    property.hasPoiSwimmingPool(),
-                    property.hasPoiSchool(),
-                    property.hasPoiShopping(),
-                    property.hasPoiParking(),
-                    property.isAvailable(),
-                    property.getListedDate(),
-                    property.getSoldDate(),
-                    property.getRealEstateAgent());
+                property.getType(),
+                property.getDistrict(),
+                property.getPrice(),
+                property.getSurface(),
+                property.getNumberOfBedrooms(),
+                property.getNumberOfBathrooms(),
+                property.getNumberOfBedrooms(),
+                property.getDescription(),
+                property.getMainPictureId(),
+                property.getMainPictureUri(),
+                property.getAddressNumber(),
+                property.getStreet(),
+                property.getPostalCode(),
+                property.getCity(),
+                property.hasPoiSwimmingPool(),
+                property.hasPoiSchool(),
+                property.hasPoiShopping(),
+                property.hasPoiParking(),
+                property.isAvailable(),
+                property.getListedDate(),
+                property.getSoldDate(),
+                property.getRealEstateAgent());
+    }
+
+    public LiveData<List<Property>> searchProperty(String type,
+                                                   String district,
+                                                   Integer minPrice,
+                                                   Integer maxPrice,
+                                                   Integer minSurface,
+                                                   Integer maxSurface,
+                                                   Integer minRooms,
+                                                   Integer maxRooms,
+                                                   boolean hasSwimmingPool,
+                                                   boolean hasSchool,
+                                                   boolean hasShopping,
+                                                   boolean hasParking) {
+        return mPropertyDao.searchProperty(type,
+                district,
+                minPrice,
+                maxPrice,
+                minSurface,
+                maxSurface,
+                minRooms,
+                maxRooms,
+                hasSwimmingPool,
+                hasSchool,
+                hasShopping,
+                hasParking);
     }
 
     public ExecutorService getExecutor() {

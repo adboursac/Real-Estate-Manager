@@ -33,6 +33,9 @@ public class PropertyListFragment extends Fragment implements CommandSelectPrope
     private PropertyListViewModel mPropertyListViewModel;
     private RecyclerView mRecyclerView;
     private List<Property> mProperties = new ArrayList<>();
+    private PropertyListAdapter mAdapter;
+    private MenuItem mSearchButton;
+    private MenuItem mClearSearchButton;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -43,6 +46,9 @@ public class PropertyListFragment extends Fragment implements CommandSelectPrope
 
         initRecyclerView();
         initObservers();
+        displaySearchNoResultsMessage();
+
+        if (mProperties.isEmpty() && !mPropertyListViewModel.isDisplayingSearch()) mPropertyListViewModel.fetchAllProperties(getViewLifecycleOwner());
 
         setHasOptionsMenu(true);
         return mBinding.getRoot();
@@ -53,22 +59,31 @@ public class PropertyListFragment extends Fragment implements CommandSelectPrope
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(layoutManager);
 
-        PropertyListAdapter mAdapter = new PropertyListAdapter(mProperties, this);
+        mAdapter = new PropertyListAdapter(mProperties, this);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
     }
 
     private void initObservers() {
-        mPropertyListViewModel.fetchAllProperties().observe(requireActivity(), properties -> {
+        mPropertyListViewModel.getCurrentPropertiesList().observe(getViewLifecycleOwner(), properties -> {
             mProperties.clear();
             mProperties.addAll(properties);
-            if (mRecyclerView.getAdapter() != null) mRecyclerView.getAdapter().notifyDataSetChanged();
+            mAdapter.notifyDataSetChanged();
+            displaySearchNoResultsMessage();
         });
     }
 
-    private void initDeleteButton() {
-        //mBinding
-        //mPropertyListViewModel.
+    private void displaySearchNoResultsMessage() {
+        if (mPropertyListViewModel.isDisplayingSearch() && mProperties.size() == 0) {
+            mBinding.noResultMessage.setVisibility(View.VISIBLE);
+            return;
+        }
+        mBinding.noResultMessage.setVisibility(View.GONE);
+    }
+
+    public void clearSearch() {
+        mPropertyListViewModel.fetchAllProperties(getViewLifecycleOwner());
+        enableSearchButtons(false);
     }
 
     @Override
@@ -79,6 +94,9 @@ public class PropertyListFragment extends Fragment implements CommandSelectPrope
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.property_list_menu, menu);
+        mSearchButton = menu.findItem(R.id.list_toolbar_search_property_button);
+        mClearSearchButton = menu.findItem(R.id.list_toolbar_clear_search_property_button);
+        enableSearchButtons(mPropertyListViewModel.isDisplayingSearch());
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -86,14 +104,22 @@ public class PropertyListFragment extends Fragment implements CommandSelectPrope
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_property_button:
-                Navigation.findNavController(getView()).navigate(R.id.propertyAddFragment);
+                Navigation.findNavController(requireView()).navigate(R.id.propertyAddFragment);
                 break;
-            case R.id.search_property_button:
-                // Navigate to search property fragment
+            case R.id.list_toolbar_search_property_button:
+                Navigation.findNavController(requireView()).navigate(R.id.propertySearchFragment);
+                break;
+            case R.id.list_toolbar_clear_search_property_button:
+                clearSearch();
                 break;
             default:
                 Log.w("MeetingListFragment", "onOptionsItemSelected: didn't match any menu item");
         }
         return true;
+    }
+
+    public void enableSearchButtons(boolean displayingSearch) {
+        mSearchButton.setVisible(!displayingSearch);
+        mClearSearchButton.setVisible(displayingSearch);
     }
 }
