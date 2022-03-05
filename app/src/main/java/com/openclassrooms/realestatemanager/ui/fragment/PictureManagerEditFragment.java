@@ -49,7 +49,7 @@ public class PictureManagerEditFragment extends Fragment implements CommandPictu
     }
 
     private void initObservers() {
-        mPropertyEditViewModel.getCurrentPropertyPictures().observe(requireActivity(), pictures -> {
+        mPropertyEditViewModel.getCurrentPropertyPictures().observe(getViewLifecycleOwner(), pictures -> {
             mPictures.clear();
             mPictures.addAll(pictures);
             mAdapter.notifyDataSetChanged();
@@ -60,7 +60,7 @@ public class PictureManagerEditFragment extends Fragment implements CommandPictu
             mBinding.viewPager.setCurrentItem(mPictures.size() - 1);
         });
 
-        mPropertyEditViewModel.getMainPictureRowIndex().observe(requireActivity(), index -> mAdapter.notifyDataSetChanged());
+        mPropertyEditViewModel.getMainPictureRowIndex().observe(getViewLifecycleOwner(), index -> mAdapter.notifyDataSetChanged());
     }
 
     private void initViewPager() {

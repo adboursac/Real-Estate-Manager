@@ -49,7 +49,7 @@ public class PictureManagerAddFragment extends Fragment implements CommandPictur
     }
 
     private void initObservers() {
-        mPropertyAddViewModel.getCurrentPropertyPictures().observe(requireActivity(), pictures -> {
+        mPropertyAddViewModel.getCurrentPropertyPictures().observe(getViewLifecycleOwner(), pictures -> {
             mPictures.clear();
             mPictures.addAll(pictures);
             mAdapter.notifyDataSetChanged();
@@ -60,7 +60,7 @@ public class PictureManagerAddFragment extends Fragment implements CommandPictur
             mBinding.viewPager.setCurrentItem(mPictures.size() - 1);
         });
 
-        mPropertyAddViewModel.getMainPictureRowIndex().observe(requireActivity(), index -> mAdapter.notifyDataSetChanged());
+        mPropertyAddViewModel.getMainPictureRowIndex().observe(getViewLifecycleOwner(), index -> mAdapter.notifyDataSetChanged());
     }
 
     private void initViewPager() {

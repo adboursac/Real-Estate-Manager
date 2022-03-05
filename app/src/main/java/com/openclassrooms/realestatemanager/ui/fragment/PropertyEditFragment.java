@@ -55,14 +55,14 @@ public class PropertyEditFragment extends Fragment implements CommandPictureMana
     }
 
     private void initObservers() {
-        mPropertyEditViewModel.getCurrentPropertyState().observe(requireActivity(), property -> {
+        mPropertyEditViewModel.getCurrentPropertyState().observe(getViewLifecycleOwner(), property -> {
             updateInputs(property);
             mPropertyEditAdapter.notifyDataSetChanged();
         });
 
-        mPropertyEditViewModel.getMainPictureRowIndex().observe(requireActivity(), index -> mPropertyEditAdapter.notifyDataSetChanged());
+        mPropertyEditViewModel.getMainPictureRowIndex().observe(getViewLifecycleOwner(), index -> mPropertyEditAdapter.notifyDataSetChanged());
 
-        mPropertyEditViewModel.getCurrentPropertyPictures().observe(requireActivity(), pictures -> {
+        mPropertyEditViewModel.getCurrentPropertyPictures().observe(getViewLifecycleOwner(), pictures -> {
             mPictures.clear();
             mPictures.addAll(pictures);
             mPropertyEditAdapter.notifyDataSetChanged();

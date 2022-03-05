@@ -56,14 +56,14 @@ public class PropertyAddFragment extends Fragment implements CommandPictureManag
     }
 
     private void initObservers() {
-        mPropertyAddViewModel.getCurrentProperty().observe(requireActivity(), property -> {
+        mPropertyAddViewModel.getCurrentProperty().observe(getViewLifecycleOwner(), property -> {
             updateInputs(property);
             mPropertyAddAdapter.notifyDataSetChanged();
         });
 
-        mPropertyAddViewModel.getMainPictureRowIndex().observe(requireActivity(), index -> mPropertyAddAdapter.notifyDataSetChanged());
+        mPropertyAddViewModel.getMainPictureRowIndex().observe(getViewLifecycleOwner(), index -> mPropertyAddAdapter.notifyDataSetChanged());
 
-        mPropertyAddViewModel.getCurrentPropertyPictures().observe(requireActivity(), pictures -> {
+        mPropertyAddViewModel.getCurrentPropertyPictures().observe(getViewLifecycleOwner(), pictures -> {
             mPictures.clear();
             mPictures.addAll(pictures);
             mPropertyAddAdapter.notifyDataSetChanged();

@@ -61,9 +61,9 @@ public class PropertyDetailsFragment extends Fragment {
     }
 
     private void initObservers() {
-        mPropertyListViewModel.getCurrentProperty().observe(requireActivity(), this::populateDetails);
+        mPropertyListViewModel.getCurrentProperty().observe(getViewLifecycleOwner(), this::populateDetails);
 
-        mPropertyListViewModel.getCurrentPropertyPictures().observe(requireActivity(), pictures -> {
+        mPropertyListViewModel.getCurrentPropertyPictures().observe(getViewLifecycleOwner(), pictures -> {
             mPictures.clear();
             mPictures.addAll(pictures);
             if (mRecyclerView.getAdapter() != null) mRecyclerView.getAdapter().notifyDataSetChanged();

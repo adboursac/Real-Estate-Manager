@@ -44,7 +44,7 @@ public class PictureViewerFragment extends Fragment {
     }
 
     private void initObservers() {
-        mPropertyListViewModel.getCurrentPropertyPictures().observe(requireActivity(), pictures -> {
+        mPropertyListViewModel.getCurrentPropertyPictures().observe(getViewLifecycleOwner(), pictures -> {
             mPictures.clear();
             mPictures.addAll(pictures);
             mAdapter.notifyDataSetChanged();
