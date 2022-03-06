@@ -3,12 +3,10 @@
     <string name="placeholder_surface">%d sq m</string>
     <string name="placeholder_int">%d</string>
 
-    <!-- Drawer -->
-    <string name="menu_currency_converter">Currency converter</string>
-
     <!-- Toolbar -->
     <string name="toolbar_properties_list">Properties list</string>
     <string name="toolbar_currency_converter">Currency converter</string>
+    <string name="toolbar_loan_simulator">Loan simulator</string>
     <string name="toolbar_add_new_property">Add a new property</string>
     <string name="toolbar_search_property">Search property</string>
     <string name="toolbar_property_details">Property details</string>
@@ -72,10 +70,18 @@
     <!-- Buttons -->
     <string name="button_save">Save</string>
     <string name="button_search">Search</string>
+    <string name="button_calculate">Calculate</string>
 
     <!-- Currency Converter -->
     <string name="currency_euros">Euros</string>
     <string name="currency_dollars">Dollars</string>
+
+    <!-- Loan simulator -->
+    <string name="loan_amount">Loan amount</string>
+    <string name="loan_interest_rate">Interest rate</string>
+    <string name="loan_duration">Duration (Years)</string>
+    <string name="loan_monthly_payment">Monthly payment :</string>
+    <string name="loan_credit_cost">Credit cost :</string>
 
     <!-- Titles -->
     <string name="title_pick_a_date">Pick a date</string>

@@ -7,6 +7,11 @@
         <item
             android:id="@+id/currencyConverterFragment"
             android:icon="@drawable/ic_baseline_swap_horizontal_circle_24"
-            android:title="@string/menu_currency_converter" />
+            android:title="@string/toolbar_currency_converter" />
+
+        <item
+            android:id="@+id/loanSimulatorFragment"
+            android:icon="@drawable/ic_baseline_calculate_24"
+            android:title="@string/toolbar_loan_simulator" />
     </group>
 </menu>

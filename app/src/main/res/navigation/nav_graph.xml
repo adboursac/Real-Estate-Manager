@@ -16,6 +16,11 @@
         android:label="@string/toolbar_currency_converter"
         tools:layout="@layout/fragment_currency_converter"/>
     <fragment
+        android:id="@+id/loanSimulatorFragment"
+        android:name="com.openclassrooms.realestatemanager.ui.fragment.LoanSimulatorFragment"
+        android:label="@string/toolbar_loan_simulator"
+        tools:layout="@layout/fragment_loan_simulator"/>
+    <fragment
         android:id="@+id/propertyDetailsFragment"
         android:name="com.openclassrooms.realestatemanager.ui.fragment.PropertyDetailsFragment"
         android:label="@string/toolbar_property_details" >

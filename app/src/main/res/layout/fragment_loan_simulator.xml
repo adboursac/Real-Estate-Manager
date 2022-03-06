@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/margin_medium">
+
+    <ImageView
+        android:id="@+id/loan_icon"
+        android:layout_width="@dimen/icon_large"
+        android:layout_height="@dimen/icon_large"
+        android:layout_marginTop="@dimen/margin_default"
+        android:contentDescription="@string/property_address"
+        android:src="@drawable/ic_baseline_calculate_24"
+        android:tint="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/loan_amount_layout"
+        style="@style/AppTheme.textInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:hint="@string/loan_amount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loan_icon"
+        app:startIconDrawable="@drawable/ic_baseline_money_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/loan_amount"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/interest_rate_layout"
+        style="@style/AppTheme.textInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default"
+        android:hint="@string/loan_interest_rate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loan_amount_layout"
+        app:startIconDrawable="@drawable/ic_baseline_percent_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/interest_rate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/duration_layout"
+        style="@style/AppTheme.textInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default"
+        android:hint="@string/loan_duration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/interest_rate_layout"
+        app:startIconDrawable="@drawable/ic_baseline_calendar_month_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/duration"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/button_calculate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/duration_layout" />
+
+    <ImageView
+        android:id="@+id/monthly_payment_icon"
+        android:layout_width="@dimen/icon_small"
+        android:layout_height="@dimen/icon_small"
+        android:layout_marginTop="@dimen/margin_large"
+        android:contentDescription="@string/property_address"
+        android:src="@drawable/ic_baseline_calendar_month_24"
+        android:tint="@color/colorAccent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/monthly_payment_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_mini"
+        android:text="@string/loan_monthly_payment"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/text_size_medium"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/monthly_payment_icon"
+        app:layout_constraintTop_toTopOf="@id/monthly_payment_icon" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/monthly_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_mini"
+        android:text="@string/loan_monthly_payment"
+        android:textSize="@dimen/text_size_medium"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/monthly_payment_label"
+        app:layout_constraintTop_toTopOf="@id/monthly_payment_icon" />
+
+    <ImageView
+        android:id="@+id/credit_cost_icon"
+        android:layout_width="@dimen/icon_small"
+        android:layout_height="@dimen/icon_small"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:contentDescription="@string/property_address"
+        android:src="@drawable/ic_baseline_percent_24"
+        android:tint="@color/colorAccent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/monthly_payment_icon" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/credit_cost_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_mini"
+        android:text="@string/loan_credit_cost"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/text_size_medium"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/credit_cost_icon"
+        app:layout_constraintBottom_toBottomOf="@id/credit_cost_icon" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/credit_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_mini"
+        android:text="@string/loan_credit_cost"
+        android:textSize="@dimen/text_size_medium"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/credit_cost_label"
+        app:layout_constraintBottom_toBottomOf="@id/credit_cost_icon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
