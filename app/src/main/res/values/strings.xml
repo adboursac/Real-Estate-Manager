@@ -73,6 +73,10 @@
     <string name="button_save">Save</string>
     <string name="button_search">Search</string>
 
+    <!-- Currency Converter -->
+    <string name="currency_euros">Euros</string>
+    <string name="currency_dollars">Dollars</string>
+
     <!-- Titles -->
     <string name="title_pick_a_date">Pick a date</string>
 

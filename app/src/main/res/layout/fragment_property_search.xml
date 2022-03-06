@@ -51,7 +51,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
-            android:id="@+id/price_icon"
+            android:id="@+id/converter_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_default"
@@ -70,8 +70,8 @@
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/text_size_medium"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/price_icon"
-            app:layout_constraintStart_toEndOf="@id/price_icon" />
+            app:layout_constraintBottom_toBottomOf="@id/converter_icon"
+            app:layout_constraintStart_toEndOf="@id/converter_icon" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/price_min_layout"
@@ -82,7 +82,7 @@
             android:hint="@string/property_price_min"
             app:layout_constraintEnd_toStartOf="@id/price_max_layout"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/price_icon">
+            app:layout_constraintTop_toBottomOf="@id/converter_icon">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/price_min"
@@ -102,7 +102,7 @@
             android:hint="@string/property_price_max"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/price_min_layout"
-            app:layout_constraintTop_toBottomOf="@id/price_icon">
+            app:layout_constraintTop_toBottomOf="@id/converter_icon">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/price_max"
