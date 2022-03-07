@@ -85,7 +85,13 @@ public class PropertyDetailsFragment extends Fragment {
         mBinding.listedDate.setText(property.getListedDate());
         mBinding.realEstateAgent.setText(property.getRealEstateAgent());
 
+        initMapButton();
         setMapPictureAsynchronously(property);
+    }
+
+    private void initMapButton() {
+        mBinding.map.setOnClickListener(view ->
+        Navigation.findNavController(view).navigate(R.id.mapFragment));
     }
 
     public void setMapPictureAsynchronously(Property property) {
