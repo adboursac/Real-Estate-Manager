@@ -63,6 +63,9 @@ dependencies {
     //Google maps
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
 
+    // Location
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
+
     //Testing
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'androidx.arch.core:core-testing:2.1.0'

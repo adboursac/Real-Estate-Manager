@@ -78,6 +78,6 @@
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.openclassrooms.realestatemanager.ui.fragment.MapFragment"
-        android:label="MapFragment" />
+        android:label="@string/toolbar_map_view" />
 
 </navigation>

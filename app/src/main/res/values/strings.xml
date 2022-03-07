@@ -11,6 +11,7 @@
     <string name="toolbar_search_property">Search property</string>
     <string name="toolbar_property_details">Property details</string>
     <string name="toolbar_edit_property">Edit property</string>
+    <string name="toolbar_map_view">Map view</string>
 
     <!-- Property -->
     <string name="property_type">Type</string>

@@ -1,5 +1,6 @@
 package com.openclassrooms.realestatemanager.ui.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -35,7 +36,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private GoogleMap mMap;
     private FragmentMapBinding mBinding;
     private PropertyListViewModel mPropertyListViewModel;
-    private LatLng mCurrentLocation;
+    private LatLng mCurrentPropertyLocation;
+    private LatLng mLastLocation;
+    private boolean requireLocationActivation = true;
 
     public MapFragment() {
     }
@@ -66,8 +69,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
-        configureMapObjects();
 
+        configureMapObjects();
         initObservers();
         initLocateButton();
     }
@@ -77,15 +80,42 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
      */
     public void configureMapObjects() {
         mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.google_map_style));
-
+        verifyLocationConfiguration();
         mMap.getUiSettings().setMyLocationButtonEnabled(false);
     }
 
     /**
-     * Init viewModels observers reactions
+     * Init viewModel observers reactions
      */
     private void initObservers() {
         mPropertyListViewModel.getCurrentPropertiesList().observe(getViewLifecycleOwner(), this::updateEveryProperties);
+
+        mPropertyListViewModel.getLocationLiveData().observe(getViewLifecycleOwner(), location -> {
+            verifyLocationConfiguration();
+            mLastLocation = location;
+        });
+    }
+
+    private void verifyLocationConfiguration() {
+        if (requireLocationActivation) {
+            if (mPropertyListViewModel.hasLocationPermission()) {
+                requireLocationActivation = false;
+                configureLocationRelatedObjects();
+            }
+            else {
+                mPropertyListViewModel.requestLocationPermission(requireActivity());
+            }
+        }
+    }
+
+    /**
+     * Locations related configurations that require location permission to occur
+     */
+    @SuppressLint("MissingPermission")
+    public void configureLocationRelatedObjects() {
+        if (mMap != null && mPropertyListViewModel.hasLocationPermission()) {
+            mMap.setMyLocationEnabled(true);
+        }
     }
 
     /**
@@ -119,7 +149,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mPropertyListViewModel.getExecutorService().execute(() -> {
 
             LatLng latLng = MapHelper.addressToFirstLatLng(property.getFullAddress(), getContext());
-            if (displayInfo) mCurrentLocation = latLng;
+            if (displayInfo) mCurrentPropertyLocation = latLng;
 
             mainHandler.post(() -> {
                 createPropertyMarker(
@@ -128,7 +158,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                         property.getId(),
                         displayInfo
                 );
-                if (displayInfo) moveCamera(mCurrentLocation);
+                if (displayInfo) moveCameraOnCurrentProperty();
             });
         });
     }
@@ -155,10 +185,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     }
 
     private void initLocateButton() {
-        mBinding.floatingActionButton.setOnClickListener(view -> {
-            if (mCurrentLocation == null ) return;
-            moveCamera(mCurrentLocation);
-        });
+        mBinding.floatingActionButton.setOnClickListener(view -> moveCamera(mLastLocation));
     }
 
     /**
@@ -167,7 +194,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
      * @param latLng location to move the camera
      */
     public void moveCamera(LatLng latLng) {
-        if (mCurrentLocation == null ) return;
+        if (latLng == null ) return;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, mMapZoom));
+    }
+
+    public void moveCameraOnCurrentProperty() {
+        if (mCurrentPropertyLocation == null ) return;
+        moveCamera(mCurrentPropertyLocation);
     }
 }
