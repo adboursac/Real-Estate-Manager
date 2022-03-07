@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -73,6 +74,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         configureMapObjects();
         initObservers();
         initLocateButton();
+        initMarkerInfoButton();
     }
 
     /**
@@ -184,8 +186,22 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
+    /**
+     * Click on locate floatingActionButton moves camera to user location
+     */
     private void initLocateButton() {
         mBinding.floatingActionButton.setOnClickListener(view -> moveCamera(mLastLocation));
+    }
+
+    /**
+     * Click on markers info navigate to property details
+     */
+    private void initMarkerInfoButton() {
+        mMap.setOnInfoWindowClickListener(marker -> {
+            if (marker.getTag() == null) return;
+            mPropertyListViewModel.selectProperty((long) marker.getTag());
+            Navigation.findNavController(mBinding.getRoot()).navigate(R.id.propertyDetailsFragment);
+        });
     }
 
     /**
