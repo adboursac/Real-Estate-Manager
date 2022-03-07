@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.data.viewmodel.PropertyEditViewModel;
+import com.openclassrooms.realestatemanager.utils.MapHelper;
 import com.openclassrooms.realestatemanager.utils.Utils;
 import com.openclassrooms.realestatemanager.ViewModelFactory;
 import com.openclassrooms.realestatemanager.data.model.Property;
@@ -82,6 +83,8 @@ public class PropertyDetailsFragment extends Fragment {
         mBinding.description.setText(property.getDescription());
         mBinding.listedDate.setText(property.getListedDate());
         mBinding.realEstateAgent.setText(property.getRealEstateAgent());
+
+        Utils.setPicture(MapHelper.addressToStaticMapUrl(property.getFullAddress(), getContext()), mBinding.map);
     }
 
     @Override
@@ -98,7 +101,7 @@ public class PropertyDetailsFragment extends Fragment {
                 break;
             case R.id.deletePropertyButton:
                 mPropertyListViewModel.deleteCurrentProperty();
-                Navigation.findNavController(getView()).navigate(R.id.propertyListFragment);
+                Navigation.findNavController(requireView()).navigate(R.id.propertyListFragment);
                 break;
             default:
                 Log.w("MeetingListFragment", "onOptionsItemSelected: didn't match any menu item");
@@ -111,6 +114,6 @@ public class PropertyDetailsFragment extends Fragment {
         PropertyEditViewModel editViewModel = new ViewModelProvider(requireActivity(), ViewModelFactory.getInstance(requireActivity())).get(PropertyEditViewModel.class);
         editViewModel.setCurrentPropertyState(mProperty);
         editViewModel.setCurrentPropertyPictures(mPictures);
-        Navigation.findNavController(getView()).navigate(R.id.propertyEditFragment);
+        Navigation.findNavController(requireView()).navigate(R.id.propertyEditFragment);
     }
 }
