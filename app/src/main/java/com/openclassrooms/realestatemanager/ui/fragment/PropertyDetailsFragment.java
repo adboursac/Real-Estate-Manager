@@ -2,6 +2,7 @@ package com.openclassrooms.realestatemanager.ui.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -84,7 +85,18 @@ public class PropertyDetailsFragment extends Fragment {
         mBinding.listedDate.setText(property.getListedDate());
         mBinding.realEstateAgent.setText(property.getRealEstateAgent());
 
-        Utils.setPicture(MapHelper.addressToStaticMapUrl(property.getFullAddress(), getContext()), mBinding.map);
+        setMapPictureAsynchronously(property);
+    }
+
+    public void setMapPictureAsynchronously(Property property) {
+        Handler mainHandler = new Handler(requireContext().getMainLooper());
+        mPropertyListViewModel.getExecutorService().execute(() -> {
+            String mapUrl = MapHelper.addressToStaticMapUrl(property.getFullAddress(), getContext());
+            mainHandler.post(() -> {
+                mBinding.noWifi.setVisibility(View.GONE);
+                Utils.setPicture(mapUrl, mBinding.map);
+            });
+        });
     }
 
     @Override

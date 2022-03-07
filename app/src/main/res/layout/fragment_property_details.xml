@@ -165,11 +165,12 @@
 
         <TextView
             android:id="@+id/poi"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_default"
             android:text="@string/property_poi"
             app:layout_constraintStart_toEndOf="@id/poiIcon"
+            app:layout_constraintEnd_toEndOf="@id/guidelineHalfWidth"
             app:layout_constraintTop_toBottomOf="@id/poiLabel" />
 
         <ImageView
@@ -211,7 +212,20 @@
             android:layout_marginStart="@dimen/margin_default"
             android:layout_marginTop="@dimen/margin_default"
             android:contentDescription="@null"
-            android:src="@drawable/ic_baseline_location_on_24"
+            app:layout_constraintStart_toStartOf="@id/guidelineHalfWidth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/location" />
+
+        <ImageView
+            android:id="@+id/noWifi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintDimensionRatio="1:1"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_large"
+            android:contentDescription="@null"
+            android:tint="@color/greyLight"
+            android:src="@drawable/ic_baseline_signal_wifi_connected_no_internet_4_24"
             app:layout_constraintStart_toStartOf="@id/guidelineHalfWidth"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/location" />
