@@ -199,7 +199,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private void initMarkerInfoButton() {
         mMap.setOnInfoWindowClickListener(marker -> {
             if (marker.getTag() == null) return;
-            mPropertyListViewModel.selectProperty((long) marker.getTag());
+            mPropertyListViewModel.selectProperty(getViewLifecycleOwner(), (long) marker.getTag());
             Navigation.findNavController(mBinding.getRoot()).navigate(R.id.propertyDetailsFragment);
         });
     }

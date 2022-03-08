@@ -54,6 +54,8 @@ public class PropertyListFragment extends Fragment implements CommandSelectPrope
         return mBinding.getRoot();
     }
 
+
+
     private void initRecyclerView() {
         mRecyclerView = mBinding.recyclerView;
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -88,7 +90,7 @@ public class PropertyListFragment extends Fragment implements CommandSelectPrope
 
     @Override
     public void selectProperty(Property property) {
-        mPropertyListViewModel.setCurrentProperty(property);
+        mPropertyListViewModel.setCurrentProperty(getViewLifecycleOwner(), property);
     }
 
     @Override
