@@ -13,5 +13,10 @@
             android:id="@+id/loanSimulatorFragment"
             android:icon="@drawable/ic_baseline_calculate_24"
             android:title="@string/toolbar_loan_simulator" />
+
+        <item
+            android:id="@+id/mapFragment"
+            android:icon="@drawable/ic_baseline_location_on_24"
+            android:title="@string/toolbar_map_view" />
     </group>
 </menu>
