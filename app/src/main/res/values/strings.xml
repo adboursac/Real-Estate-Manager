@@ -88,4 +88,6 @@
     <!-- Titles -->
     <string name="title_pick_a_date">Pick a date</string>
 
+    <!-- Network -->
+    <string name="no_network">There is no network connection right now</string>
 </resources>
