@@ -1,7 +1,10 @@
 package com.openclassrooms.realestatemanager.data.model;
 
+import android.content.ContentValues;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity
@@ -257,5 +260,43 @@ public class Property {
         if (!soldDate.contentEquals(property.getSoldDate())) return false;
         if (!realEstateAgent.contentEquals(property.getRealEstateAgent())) return false;
         return true;
+    }
+
+    //Constructor without parameters dedicated to buildWithContentValues builder
+    @Ignore
+    public Property() {
+    }
+
+    public static Property buildWithContentValues(ContentValues values) {
+        final Property property = new Property();
+        if (values.containsKey("property_id")) property.setId(values.getAsLong("property_id"));
+        if (values.containsKey("type")) property.setType(values.getAsString("type"));
+        if (values.containsKey("district")) property.setDistrict(values.getAsString("district"));
+        if (values.containsKey("price")) property.setPrice(values.getAsInteger("price"));
+        if (values.containsKey("surface")) property.setSurface(values.getAsInteger("surface"));
+        if (values.containsKey("numberOfRooms"))
+            property.setNumberOfRooms(values.getAsInteger("numberOfRooms"));
+        if (values.containsKey("numberOfBedrooms"))
+            property.setNumberOfBedrooms(values.getAsInteger("numberOfBedrooms"));
+        if (values.containsKey("numberOfBathrooms"))
+            property.setNumberOfBathrooms(values.getAsInteger("numberOfBathrooms"));
+        if (values.containsKey("poiSwimmingPool")) property.setPoiSwimmingPool(values.getAsBoolean("poiSwimmingPool"));
+        if (values.containsKey("poiSchool")) property.setPoiSchool(values.getAsBoolean("poiSchool"));
+        if (values.containsKey("poiShopping")) property.setPoiShopping(values.getAsBoolean("poiShopping"));
+        if (values.containsKey("poiParking")) property.setPoiParking(values.getAsBoolean("poiParking"));
+        if (values.containsKey("description")) property.setDescription(values.getAsString("description"));
+        if (values.containsKey("mainPictureId")) property.setMainPictureId(values.getAsLong("mainPictureId"));
+        if (values.containsKey("mainPictureUri")) property.setMainPictureUri(values.getAsString("mainPictureUri"));
+        if (values.containsKey("addressNumber")) property.setAddressNumber(values.getAsString("addressNumber"));
+        if (values.containsKey("street")) property.setStreet(values.getAsString("street"));
+        if (values.containsKey("postalCode")) property.setPostalCode(values.getAsString("postalCode"));
+        if (values.containsKey("city")) property.setCity(values.getAsString("city"));
+        if (values.containsKey("available")) property.setAvailable(values.getAsBoolean("available"));
+        if (values.containsKey("listedDate"))
+            property.setListedDate(values.getAsString("listedDate"));
+        if (values.containsKey("soldDate")) property.setSoldDate(values.getAsString("soldDate"));
+        if (values.containsKey("realEstateAgent"))
+            property.setRealEstateAgent(values.getAsString("realEstateAgent"));
+        return property;
     }
 }

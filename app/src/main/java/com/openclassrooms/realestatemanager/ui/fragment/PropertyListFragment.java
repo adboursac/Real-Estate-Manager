@@ -120,6 +120,9 @@ public class PropertyListFragment extends Fragment implements CommandSelectPrope
             case R.id.editPropertyButton:
                 editCurrentProperty();
                 break;
+            case R.id.deletePropertyButton:
+                mPropertyListViewModel.deleteCurrentProperty();
+                break;
             default:
                 Log.w("MeetingListFragment", "onOptionsItemSelected: didn't match any menu item");
         }
