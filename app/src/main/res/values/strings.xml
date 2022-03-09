@@ -51,6 +51,7 @@
     <string name="property_no_match">No property match your search</string>
     <string name="property_at_least_one_picture">You must provide at least one picture</string>
     <string name="property_search_no_result">Your search criteria returned no results</string>
+    <string name="property_no_selection">Select a property</string>
 
     <!-- Property picture -->
     <string name="picture_is_main">Main picture</string>

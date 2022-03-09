@@ -7,7 +7,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pictures"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/property_picture_thumbnail_size"
+        android:layout_height="@dimen/property_picture_thumbnail_size_large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +26,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
+            app:layout_constraintGuide_percent="0.3" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineHalfRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.6" />
 
         <ImageView
             android:id="@+id/surfaceIcon"
@@ -207,14 +214,12 @@
 
         <ImageView
             android:id="@+id/map"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="@dimen/margin_default"
-            android:layout_marginTop="@dimen/margin_default"
+            android:layout_width="@dimen/static_map_max_size"
+            android:layout_height="@dimen/static_map_max_size"
             android:contentDescription="@null"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/guidelineHalfLeft"
+            app:layout_constraintStart_toStartOf="@id/guidelineHalfRight"
             app:layout_constraintTop_toBottomOf="@id/location" />
 
         <ImageView
@@ -228,14 +233,14 @@
             android:tint="@color/greyLight"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/guidelineHalfLeft"
+            app:layout_constraintStart_toStartOf="@id/guidelineHalfRight"
             app:layout_constraintTop_toBottomOf="@id/location" />
 
         <TextView
             android:id="@+id/descriptionLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_large"
             android:text="@string/property_description"
             android:textSize="@dimen/text_size_medium"
             android:textStyle="bold"

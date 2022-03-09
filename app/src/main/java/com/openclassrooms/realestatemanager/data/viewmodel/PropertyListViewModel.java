@@ -135,7 +135,6 @@ public class PropertyListViewModel extends ViewModel {
     public LiveData<LatLng> getLocationLiveData() { return  mLocationRepository.getLocationLiveData(); }
     public boolean hasLocationPermission() { return mLocationRepository.hasLocationPermission(); }
     public void requestLocationPermission(Activity activity) { mLocationRepository.requestLocationPermission(activity); }
-    public void refreshLocation() { mLocationRepository.refreshLocation(); }
-
+    //public void refreshLocation() { mLocationRepository.refreshLocation(); }
 
 }

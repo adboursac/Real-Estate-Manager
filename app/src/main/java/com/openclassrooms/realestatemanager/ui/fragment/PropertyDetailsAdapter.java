@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.openclassrooms.realestatemanager.MainApplication;
+import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.data.model.PropertyPicture;
 import com.openclassrooms.realestatemanager.databinding.PropertyPictureItemBinding;
 import com.openclassrooms.realestatemanager.utils.Utils;
@@ -54,9 +56,14 @@ public class PropertyDetailsAdapter extends RecyclerView.Adapter<PropertyDetails
     }
 
     public void onItemClick(View view, int position) {
-        Navigation.findNavController(view).navigate(
-                PropertyDetailsFragmentDirections.fromDetailsFragmentToPictureViewer().setPictureRowIndex(position)
-        );
+        if (MainApplication.getContext().getResources().getBoolean(R.bool.isTablet)) {
+            Navigation.findNavController(view).navigate(
+                    PropertyListFragmentDirections.fromListFragmentToPictureViewer().setPictureRowIndex(position));
+        }
+        else {
+            Navigation.findNavController(view).navigate(
+                    PropertyDetailsFragmentDirections.fromDetailsFragmentToPictureViewer().setPictureRowIndex(position));
+        }
     }
 
     public void displayMainPictureIcon(View view, int position) {

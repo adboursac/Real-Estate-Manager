@@ -9,7 +9,11 @@
         android:id="@+id/propertyListFragment"
         android:name="com.openclassrooms.realestatemanager.ui.fragment.PropertyListFragment"
         android:label="@string/toolbar_properties_list"
-        tools:layout="@layout/fragment_property_list"/>
+        tools:layout="@layout/fragment_property_list">
+        <action
+            android:id="@+id/fromListFragmentToPictureViewer"
+            app:destination="@id/pictureViewerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/currencyConverterFragment"
         android:name="com.openclassrooms.realestatemanager.ui.fragment.CurrencyConverterFragment"

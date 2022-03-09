@@ -48,6 +48,7 @@ public class PropertyDetailsFragment extends Fragment {
 
         initPicturesRecyclerView();
         initObservers();
+        displayDetails(false);
 
         setHasOptionsMenu(true);
         return mBinding.getRoot();
@@ -87,6 +88,8 @@ public class PropertyDetailsFragment extends Fragment {
 
         initMapButton();
         setMapPictureAsynchronously(property);
+
+        displayDetails(true);
     }
 
     private void initMapButton() {
@@ -103,6 +106,17 @@ public class PropertyDetailsFragment extends Fragment {
                 Utils.setPicture(mapUrl, mBinding.map);
             });
         });
+    }
+
+    private void displayDetails(boolean hasSelection) {
+        if (hasSelection) {
+            mBinding.detailsContainer.setVisibility(View.VISIBLE);
+            mBinding.noPropertySelected.setVisibility(View.GONE);
+        }
+        else {
+            mBinding.detailsContainer.setVisibility(View.GONE);
+            mBinding.noPropertySelected.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

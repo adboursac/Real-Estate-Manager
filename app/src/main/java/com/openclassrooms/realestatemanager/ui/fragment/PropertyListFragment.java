@@ -21,6 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.ViewModelFactory;
 import com.openclassrooms.realestatemanager.data.model.Property;
+import com.openclassrooms.realestatemanager.data.model.PropertyPicture;
+import com.openclassrooms.realestatemanager.data.viewmodel.PropertyEditViewModel;
 import com.openclassrooms.realestatemanager.data.viewmodel.PropertyListViewModel;
 import com.openclassrooms.realestatemanager.databinding.FragmentPropertyListBinding;
 
@@ -91,6 +93,7 @@ public class PropertyListFragment extends Fragment implements CommandSelectPrope
     @Override
     public void selectProperty(Property property) {
         mPropertyListViewModel.setCurrentProperty(getViewLifecycleOwner(), property);
+        if (!getResources().getBoolean(R.bool.isTablet)) Navigation.findNavController(requireView()).navigate(R.id.propertyDetailsFragment);
     }
 
     @Override
@@ -114,10 +117,24 @@ public class PropertyListFragment extends Fragment implements CommandSelectPrope
             case R.id.list_toolbar_clear_search_property_button:
                 clearSearch();
                 break;
+            case R.id.editPropertyButton:
+                editCurrentProperty();
+                break;
             default:
                 Log.w("MeetingListFragment", "onOptionsItemSelected: didn't match any menu item");
         }
         return true;
+    }
+
+    private void editCurrentProperty() {
+        // To avoid requesting already loaded data we prepare edit view model now
+        Property property = mPropertyListViewModel.getCurrentProperty().getValue();
+        if (property == null) return;
+        List<PropertyPicture> pictures = mPropertyListViewModel.getCurrentPropertyPictures().getValue();
+        PropertyEditViewModel editViewModel = new ViewModelProvider(requireActivity(), ViewModelFactory.getInstance(requireActivity())).get(PropertyEditViewModel.class);
+        editViewModel.setCurrentPropertyState(property);
+        editViewModel.setCurrentPropertyPictures(pictures);
+        Navigation.findNavController(requireView()).navigate(R.id.propertyEditFragment);
     }
 
     public void enableSearchButtons(boolean displayingSearch) {

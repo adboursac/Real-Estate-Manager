@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.openclassrooms.realestatemanager.MainApplication;
@@ -22,6 +21,7 @@ public class PropertyListAdapter extends RecyclerView.Adapter<PropertyListAdapte
 
     private final List<Property> mProperties;
     private CommandSelectProperty mCommandSelectProperty;
+    private long mSelectedPropertyId = -1;
 
     public PropertyListAdapter(List<Property> properties, CommandSelectProperty commandSelectProperty) {
         mProperties = properties;
@@ -54,7 +54,7 @@ public class PropertyListAdapter extends RecyclerView.Adapter<PropertyListAdapte
 
         if (property.getMainPictureId() != -1) Utils.setPicture(property.getMainPictureUri(), holder.mBinding.picture);
 
-        renderItemColors(holder.itemView, holder.mBinding.price, false);
+        renderItemColors(holder.itemView, holder.mBinding.price, mSelectedPropertyId == property.getId());
         holder.itemView.setOnClickListener(view -> selectItem(view, holder.mBinding.price, property));
     }
 
@@ -64,9 +64,9 @@ public class PropertyListAdapter extends RecyclerView.Adapter<PropertyListAdapte
     }
 
     private void selectItem(View view, TextView priceTextView, Property property) {
-        renderItemColors(view, priceTextView, true);
         mCommandSelectProperty.selectProperty(property);
-        Navigation.findNavController(view).navigate(R.id.propertyDetailsFragment);
+        mSelectedPropertyId = property.getId();
+        notifyDataSetChanged();
     }
 
     private void renderItemColors(View view, TextView priceTextView, boolean selected) {
