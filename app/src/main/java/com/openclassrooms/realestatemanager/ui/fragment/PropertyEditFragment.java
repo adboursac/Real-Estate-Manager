@@ -46,12 +46,17 @@ public class PropertyEditFragment extends Fragment implements CommandPictureMana
 
         initPicturesRecyclerView();
         initObservers();
-        initTypeDropDownMenu();
         initAvailableCheckBox();
         initSaveButton();
         initDateButtons();
 
         return mBinding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initTypeDropDownMenu();
     }
 
     private void initObservers() {
