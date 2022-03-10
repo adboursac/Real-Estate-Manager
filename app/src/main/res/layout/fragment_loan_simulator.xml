@@ -128,7 +128,7 @@
         android:layout_height="@dimen/icon_small"
         android:layout_marginTop="@dimen/margin_medium"
         android:contentDescription="@string/property_address"
-        android:src="@drawable/ic_baseline_percent_24"
+        android:src="@drawable/ic_baseline_money_24"
         android:tint="@color/colorAccent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/monthly_payment_icon" />

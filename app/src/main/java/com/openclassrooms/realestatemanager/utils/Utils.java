@@ -5,7 +5,6 @@ import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
-import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.widget.ImageView;
 
@@ -15,8 +14,6 @@ import com.openclassrooms.realestatemanager.R;
 
 import java.text.NumberFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
@@ -53,19 +50,6 @@ public class Utils {
      */
     public static String getTodayDate() {
         return LocalDate.now().format(getDefaultDateTimeFormatter());
-    }
-
-    /**
-     * Network connection check
-     *
-     * @param context Context
-     * @return true if wifi is enabled, false instead
-     */
-    public static Boolean isInternetAvailableOld(Context context) {
-        Context applicationContext = context.getApplicationContext();
-        WifiManager wifi = (WifiManager) applicationContext.getSystemService(Context.WIFI_SERVICE);
-        if (wifi == null) return false;
-        return wifi.isWifiEnabled();
     }
 
     /**
@@ -116,6 +100,7 @@ public class Utils {
      * @return monthly payment amount
      */
     public static double calculateMonthlyPayment(double interestRate, double duration, double loanAmount) {
+        //Payment formula : (interestRate * (loanAmount / payPerYear)) / (1 – ((interestRate / payPerYear) + 1) ^ – payPerYear * numYears)
         double r = interestRate / 1200;
         double r1 = Math.pow(r + 1, duration);
         return ((r + (r / (r1 - 1))) * loanAmount);
