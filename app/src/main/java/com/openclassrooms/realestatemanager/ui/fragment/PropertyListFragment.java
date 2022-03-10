@@ -65,7 +65,7 @@ public class PropertyListFragment extends Fragment implements CommandSelectPrope
 
         mAdapter = new PropertyListAdapter(mProperties, this);
         mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
     }
 
     private void initObservers() {
@@ -92,8 +92,13 @@ public class PropertyListFragment extends Fragment implements CommandSelectPrope
 
     @Override
     public void selectProperty(Property property) {
-        mPropertyListViewModel.setCurrentProperty(getViewLifecycleOwner(), property);
-        if (!getResources().getBoolean(R.bool.isTablet)) Navigation.findNavController(requireView()).navigate(R.id.propertyDetailsFragment);
+        if (getResources().getBoolean(R.bool.isTablet)) {
+            mPropertyListViewModel.setCurrentProperty(getViewLifecycleOwner(), property);
+        }
+        else {
+            mPropertyListViewModel.setCurrentProperty(requireActivity(), property);
+            Navigation.findNavController(requireView()).navigate(R.id.propertyDetailsFragment);
+        }
     }
 
     @Override

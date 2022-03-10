@@ -1,17 +1,14 @@
 package com.openclassrooms.realestatemanager.ui.activity;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -20,7 +17,6 @@ import androidx.navigation.ui.NavigationUI;
 import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.ViewModelFactory;
 import com.openclassrooms.realestatemanager.data.repository.LocationRepository;
-import com.openclassrooms.realestatemanager.data.viewmodel.PropertyListViewModel;
 import com.openclassrooms.realestatemanager.databinding.ActivityMainBinding;
 import com.openclassrooms.realestatemanager.utils.Utils;
 

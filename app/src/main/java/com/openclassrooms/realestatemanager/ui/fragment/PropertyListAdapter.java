@@ -55,7 +55,7 @@ public class PropertyListAdapter extends RecyclerView.Adapter<PropertyListAdapte
         if (property.getMainPictureId() != -1) Utils.setPicture(property.getMainPictureUri(), holder.mBinding.picture);
 
         renderItemColors(holder.itemView, holder.mBinding.price, mSelectedPropertyId == property.getId());
-        holder.itemView.setOnClickListener(view -> selectItem(view, holder.mBinding.price, property));
+        holder.itemView.setOnClickListener(view -> selectItem(property));
     }
 
     @Override
@@ -63,7 +63,7 @@ public class PropertyListAdapter extends RecyclerView.Adapter<PropertyListAdapte
         return mProperties.size();
     }
 
-    private void selectItem(View view, TextView priceTextView, Property property) {
+    private void selectItem(Property property) {
         mCommandSelectProperty.selectProperty(property);
         mSelectedPropertyId = property.getId();
         notifyDataSetChanged();

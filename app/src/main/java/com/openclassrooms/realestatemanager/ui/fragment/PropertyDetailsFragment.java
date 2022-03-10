@@ -35,6 +35,7 @@ public class PropertyDetailsFragment extends Fragment {
 
     private FragmentPropertyDetailsBinding mBinding;
     private RecyclerView mRecyclerView;
+    private PropertyDetailsAdapter mAdapter;
     private PropertyListViewModel mPropertyListViewModel;
     private List<PropertyPicture> mPictures = new ArrayList<>();
     private Property mProperty;
@@ -59,18 +60,20 @@ public class PropertyDetailsFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        PropertyDetailsAdapter mAdapter = new PropertyDetailsAdapter(mPictures);
+        mAdapter = new PropertyDetailsAdapter(mPictures);
         mRecyclerView.setAdapter(mAdapter);
     }
 
     private void initObservers() {
         mPropertyListViewModel.getCurrentProperty().observe(getViewLifecycleOwner(), this::populateDetails);
 
-        mPropertyListViewModel.getCurrentPropertyPictures().observe(getViewLifecycleOwner(), pictures -> {
-            mPictures.clear();
-            mPictures.addAll(pictures);
-            if (mRecyclerView.getAdapter() != null) mRecyclerView.getAdapter().notifyDataSetChanged();
-        });
+        mPropertyListViewModel.getCurrentPropertyPictures().observe(getViewLifecycleOwner(), this::populatePictures);
+    }
+
+    private void populatePictures(List<PropertyPicture> pictures) {
+        mPictures.clear();
+        mPictures.addAll(pictures);
+        mAdapter.notifyDataSetChanged();
     }
 
     private void populateDetails(Property property) {
