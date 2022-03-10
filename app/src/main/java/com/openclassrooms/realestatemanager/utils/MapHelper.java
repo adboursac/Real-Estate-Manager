@@ -42,11 +42,12 @@ public class MapHelper {
      */
     public static LatLng addressToFirstLatLng(String address, Context context) {
         Geocoder geocoder = new Geocoder(context);
-        List<Address> addresses;
+        List<Address> addressList;
         Address location;
         try {
-            addresses = geocoder.getFromLocationName(address, 10);
-            location = addresses.get(0);
+            addressList = geocoder.getFromLocationName(address, 10);
+            if (addressList == null || addressList.size() == 0) return null;
+            location = addressList.get(0);
             return new LatLng(location.getLatitude(), location.getLongitude());
         } catch (IOException e) {
             e.printStackTrace();
