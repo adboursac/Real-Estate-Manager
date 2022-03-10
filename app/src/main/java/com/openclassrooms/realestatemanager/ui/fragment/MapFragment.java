@@ -116,6 +116,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @SuppressLint("MissingPermission")
     public void configureLocationRelatedObjects() {
         if (mMap != null && mPropertyListViewModel.hasLocationPermission()) {
+            mPropertyListViewModel.refreshLocation();
             mMap.setMyLocationEnabled(true);
         }
     }

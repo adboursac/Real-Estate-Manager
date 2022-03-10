@@ -111,6 +111,11 @@ public class PropertyListViewModel extends ViewModel {
         return mCurrentPropertyPictures;
     }
 
+    public void refreshLocation() {
+        mLocationRepository.refreshLocation();
+    }
+
+
     public void deleteCurrentProperty() {
         Property currentProperty = mCurrentProperty.getValue();
         List<PropertyPicture> pictures = mCurrentPropertyPictures.getValue();
